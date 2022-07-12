@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
+    'qna',
+    'webmaster',
     'rest_framework',
     'rest_framework_simplejwt',
 ]
@@ -153,6 +155,8 @@ env = environ.Env(
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env('SECRET_KEY')
+
+AUTH_USER_MODEL = 'user.User'
 
 SIMPLE_JWT = {
 		# Access 토큰 유효 시간 설정하기
