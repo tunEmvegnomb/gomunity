@@ -6,3 +6,10 @@ class NoticeListSerializer(serializers.ModelSerializer):
 		model = NoticeModel
 		fields = ["title"]
 
+
+class NoticeSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = NoticeModel
+        fields = ["user","title","content"]
+        
