@@ -13,11 +13,11 @@ class NoticeListView(APIView):
 
 class NoticeView(APIView):
     def post(self, request):
+        request.data['user'] = request.user
         notice_serializer = NoticeSerializer(data=request.data)
-        print(notice_serializer)
         if notice_serializer.is_valid():
             notice_serializer.save()
-            return Response({"message": "공지사항 작성에 성공했다북"}, status=status.HTTP_200_OK)
+            return Response({"message" : "공지사항 작성에 성공했다북!"}, status=status.HTTP_200_OK)
         else:
             print(notice_serializer.errors)
-            return Response({"message": "공지사항 작성에 실패했다북"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message" : "공지사항 작성에 실패했다북..."}, status=status.HTTP_400_BAD_REQUEST)
