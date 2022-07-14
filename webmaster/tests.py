@@ -11,6 +11,7 @@ class NoticeTest(APITestCase):
         cls.user_data = {'username' : 'heejeong', 'password': '1234'}
         cls.notice_data = {'title' : '안녕' , 'content' : '반갑습니다'}
         cls.user = UserModel.objects.create_user('heejeong', '1234')
+        cls.notice = NoticeModel.objects.create(**cls.notice_data)
 
     def setUp(self):
         self.access_token = self.client.post(reverse('token_obtain_pair'), self.user_data).data['access']
@@ -33,3 +34,15 @@ class NoticeTest(APITestCase):
     def test_detail_notice(self):
         response = self.client.get(reverse('notice')) 
         self.assertEqual(response.status_code,200)
+
+    # 공지사항 내용 수정 API
+    def test_update_notice(self):
+        print(f"self.notice ->{self.notice}")
+        url = reverse("notice")+"1"
+        print(f"url->{url}")
+        response = self.client.put(
+            path = url,
+            data = self.notice_data,
+            HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
+            )
+        self.assertEqual(response.status_code, 200)
