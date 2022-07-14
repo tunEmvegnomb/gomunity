@@ -16,11 +16,6 @@ class NoticeTest(APITestCase):
     def setUp(self):
         self.access_token = self.client.post(reverse('token_obtain_pair'), self.user_data).data['access']
 
-    # 공지사항 목록 조회 API 
-    def test_list_notice(self):
-        response = self.client.get(reverse('list_notice'))
-        self.assertEqual(response.status_code,200)
-        
     # 공지사항 작성하기 API
     def test_post_notice(self):
         response = self.client.post(

@@ -6,10 +6,6 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # Create your views here.
-class NoticeListView(APIView):
-    def get(self, request):
-        notices = NoticeModel.objects.all()
-        return Response(NoticeListSerializer(notices, many=True).data, status=status.HTTP_200_OK)
 
 class NoticeView(APIView):
     def get(self, request):
