@@ -37,9 +37,7 @@ class NoticeTest(APITestCase):
 
     # 공지사항 내용 수정 API
     def test_update_notice(self):
-        print(f"self.notice ->{self.notice}")
         url = reverse("notice")+"1"
-        print(f"url->{url}")
         response = self.client.put(
             path = url,
             data = self.notice_data,

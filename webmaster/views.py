@@ -28,9 +28,7 @@ class NoticeView(APIView):
             return Response({"message" : "공지사항 작성에 실패했다북..."}, status=status.HTTP_400_BAD_REQUEST)
     
     def put(self, request, id):
-        print("모델을 뽑아내줘잉")
         notice = NoticeModel.objects.get(id=id)
-        print(notice)
         notice_serializer = NoticeSerializer(notice, data=request.data, partial=True)
 
         if notice_serializer.is_valid():
