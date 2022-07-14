@@ -44,3 +44,13 @@ class NoticeTest(APITestCase):
             HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
             )
         self.assertEqual(response.status_code, 200)
+        
+    # 공지사항 삭제 API
+    def test_delete_notice(self):
+        url = reverse("notice")+"1"
+        response = self.client.delete(
+            path = url,
+            data = self.notice_data,
+            HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
+        )
+        self.assertEqual(response.status_code, 200)

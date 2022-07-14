@@ -36,3 +36,8 @@ class NoticeView(APIView):
             return Response({"message":"수정에 성공했다북"}, status=status.HTTP_200_OK)
         else:
             return Response({"message":"수정에 실패했다북"}, status=status.HTTP_400_BAD_REQUEST)
+        
+    def delete(self, request, id):
+        notice = NoticeModel.objects.get(id=id)
+        notice.delete()
+        return Response({"message":"공지 게시글이 삭제되었다북!"}, status=status.HTTP_200_OK)
