@@ -29,11 +29,7 @@ class NoticeTest(APITestCase):
             )
         self.assertEqual(response.status_code, 200)
 
-# 아티클 생성한거 테스트 하는 코드는 이런데 공지글 작성 테스트는 다른가여?
-        # def test_create_article(self):
-        # response = self.client.post(
-        #     path = reverse("article_view"),
-        #     data = self.article_data,
-        #     HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
-        # )
-        # self.assertEqual(response.data['message'], "글 작성 완료!!")
+    # 공지사항 내용 조회 API
+    def test_detail_notice(self):
+        response = self.client.get(reverse('notice')) 
+        self.assertEqual(response.status_code,200)

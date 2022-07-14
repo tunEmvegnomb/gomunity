@@ -12,6 +12,11 @@ class NoticeListView(APIView):
         return Response(NoticeListSerializer(notices, many=True).data, status=status.HTTP_200_OK)
 
 class NoticeView(APIView):
+    def get(self, request):
+        notices = NoticeModel.objects.all()
+        notices_serializer = NoticeSerializer(notices, many=True).data
+        return Response(notices_serializer)
+    
     def post(self, request):
         # request.data['user'] = request.user.id
         notice_serializer = NoticeSerializer(data=request.data)
