@@ -17,6 +17,12 @@ class QuestionTest(APITestCase):
     def setUp(self):
         self.access_token = self.client.post(reverse('token_obtain_pair'), self.user_data).data['access']
 
+    # 질문 조회 API
+    def test_get_question(self):
+        response = self.client.get(reverse("question"))
+        self.assertEqual(response.status_code, 200)
+
+    # 질문 작성 API
     def test_post_question(self):
         response = self.client.post(
             path = reverse("question"), 
@@ -25,4 +31,14 @@ class QuestionTest(APITestCase):
             )
         self.assertEqual(response.status_code, 200)
 
-    
+    # 질문 수정 API
+    def test_put_question(self):
+        response = self.client.put(
+            path = reverse("question")+"1", 
+            data = self.question_data,
+            HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
+            )
+        self.assertEqual(response.status_code, 200)
+
+
+    # 질문 삭제 API

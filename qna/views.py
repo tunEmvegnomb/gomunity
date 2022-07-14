@@ -32,7 +32,7 @@ class QuestionView(APIView):
     def put(self, request, id):
         question = QnAQuestionModel.objects.get(id=id)
         question_serializer = QuestionSerializer(question, data=request.data, partial=True)
-        if question_serializer.is_vaild():
+        if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
             return Response({"message":"수정에 성공했다북!"}, status=status.HTTP_200_OK)
         else:
