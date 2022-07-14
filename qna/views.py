@@ -18,16 +18,18 @@ class QuestionView(APIView):
     # 질문글 작성하기 API
     def post(self, request):
         # request.data['user'] = request.user.id 
+        # print(f"리퀘스트 데이터->{request.data}")
         question_serializer = QuestionSerializer(data=request.data)
         if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
+            # question_serializer.save(user=self.request.user)
             return Response({"message":"질문글 작성에 성공했다북!"})
         else:
             print(f"에러메시지{question_serializer.errors}")
             return Response({"message":"질문글 작성에 실패했다북..."})
         
     #질문글 수정하기 API
-    def put(self, request):
+    def put(self, request, id):
         question = QnAQuestionModel.objects.get(id=id)
         question_serializer = QuestionSerializer(question, data=request.data, partial=True)
         if question_serializer.is_vaild():
