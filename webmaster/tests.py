@@ -6,26 +6,34 @@ from django.urls import reverse
 
 
 class NoticeTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.user_data = {'username' : 'heejeong', 'password': '1234'}
+        cls.notice_data = {'title' : '안녕' , 'content' : '반갑습니다'}
+        cls.user = UserModel.objects.create_user('heejeong', '1234')
+
     def setUp(self):
-        self.user = UserModel.objects.create_user('admin', '123')
-        title = "거뮤니티 ver.1.0 개발노트"
-        content = "회원가입, 로그인, 공지사항, 질문 답글 게시판이 추가되었습니다"
+        self.access_token = self.client.post(reverse('token_obtain_pair'), self.user_data).data['access']
 
-        self.data = {
-            "user" : self.user.id,
-            "title" : title,
-            "content": content
-        }
-
-        self.notice = NoticeModel.objects.create(**self.data)
-        self.user = NoticeModel.objects.all()
-
+    # 공지사항 목록 조회 API 
     def test_list_notice(self):
-        response = self.client.get(reverse('webmaster:list_notice'), self.data)
-        print(f'이건 겟 -> {response.data}')
+        response = self.client.get(reverse('list_notice'))
         self.assertEqual(response.status_code,200)
+        
+    # 공지사항 작성하기 API
+    def test_post_notice(self):
+        response = self.client.post(
+            path = reverse("notice"), 
+            data = self.notice_data,
+            HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
+            )
+        self.assertEqual(response.status_code, 200)
 
-    def test_notice(self):
-        response = self.client.post(reverse('webmaster:notice'), self.data)
-        print(f'이건 포스트 -> {response.data}')
-        self.assertEqual(response.status_code,200)
+# 아티클 생성한거 테스트 하는 코드는 이런데 공지글 작성 테스트는 다른가여?
+        # def test_create_article(self):
+        # response = self.client.post(
+        #     path = reverse("article_view"),
+        #     data = self.article_data,
+        #     HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
+        # )
+        # self.assertEqual(response.data['message'], "글 작성 완료!!")
