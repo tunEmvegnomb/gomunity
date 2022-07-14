@@ -42,3 +42,10 @@ class QuestionTest(APITestCase):
 
 
     # 질문 삭제 API
+    def test_delete_question(self):
+        response = self.client.delete(
+            path = reverse("question")+"1", 
+            data = self.question_data,
+            HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
+            )
+        self.assertEqual(response.status_code, 200)
