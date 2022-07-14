@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from .models import Notice as NoticeModel
-from .serializers import NoticeListSerializer, NoticeSerializer
+from .serializers import NoticeSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
