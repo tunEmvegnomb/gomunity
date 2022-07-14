@@ -11,6 +11,7 @@ class NoticeTest(APITestCase):
         cls.user_data = {'username' : 'heejeong', 'password': '1234'}
         cls.notice_data = {'title' : '안녕' , 'content' : '반갑습니다'}
         cls.user = UserModel.objects.create_user('heejeong', '1234')
+        cls.notice = NoticeModel.objects.create(**cls.notice_data)
 
     def setUp(self):
         self.access_token = self.client.post(reverse('token_obtain_pair'), self.user_data).data['access']
@@ -29,11 +30,27 @@ class NoticeTest(APITestCase):
             )
         self.assertEqual(response.status_code, 200)
 
-# 아티클 생성한거 테스트 하는 코드는 이런데 공지글 작성 테스트는 다른가여?
-        # def test_create_article(self):
-        # response = self.client.post(
-        #     path = reverse("article_view"),
-        #     data = self.article_data,
-        #     HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
-        # )
-        # self.assertEqual(response.data['message'], "글 작성 완료!!")
+    # 공지사항 내용 조회 API
+    def test_detail_notice(self):
+        response = self.client.get(reverse('notice')) 
+        self.assertEqual(response.status_code,200)
+
+    # 공지사항 내용 수정 API
+    def test_update_notice(self):
+        url = reverse("notice")+"1"
+        response = self.client.put(
+            path = url,
+            data = self.notice_data,
+            HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
+            )
+        self.assertEqual(response.status_code, 200)
+        
+    # 공지사항 삭제 API
+    def test_delete_notice(self):
+        url = reverse("notice")+"1"
+        response = self.client.delete(
+            path = url,
+            data = self.notice_data,
+            HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
+        )
+        self.assertEqual(response.status_code, 200)

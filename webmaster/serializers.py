@@ -11,5 +11,5 @@ class NoticeSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = NoticeModel
-        fields = ["user","title","content"]
+        fields = "__all__"
         
