@@ -14,8 +14,8 @@ class QnAQuestion(models.Model):
         return f"작성된 질문은 {self.title} 입니다"
         
 class QnAAnswer(models.Model):
-	user = models.ForeignKey(UserModel, verbose_name="답변자", on_delete=models.CASCADE)
-	question = models.ForeignKey(QnAQuestion, verbose_name="질문", on_delete=models.CASCADE)
+	user = models.ForeignKey(UserModel, verbose_name="답변자", on_delete=models.SET_NULL, null=True)
+	question = models.ForeignKey(QnAQuestion, verbose_name="질문", on_delete=models.SET_NULL, null=True)
 	content = models.TextField("답변")
 	like = models.ManyToManyField('user.User', related_name="answer_like", through="AnswerLike")
 	is_selected = models.BooleanField("채택여부")
