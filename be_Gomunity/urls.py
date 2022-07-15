@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
     path('webmaster/', include('webmaster.urls')),
+    path('qna/', include('qna.urls')),
     # path('webmaster/', include(('webmaster.urls','webmaster'), namespace='webmaster')),
 ]

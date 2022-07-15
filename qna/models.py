@@ -3,7 +3,7 @@ from user.models import User as UserModel
 
 # Create your models here.
 class QnAQuestion(models.Model):
-    user = models.ForeignKey(UserModel, verbose_name="질문작성자", on_delete=models.CASCADE)
+    user = models.ForeignKey(UserModel, verbose_name="질문작성자", on_delete=models.SET_NULL, null=True)
     title = models.CharField("제목", max_length=100)
     content = models.TextField("질문글")
     like = models.ManyToManyField('user.User', related_name="question_like", through="QuestionLike")
