@@ -84,3 +84,13 @@ class QuestionTest(APITestCase):
             HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
         )
         self.assertEqual(response.status_code, 200)
+        
+    # 질문글 좋아요 API
+    def test_question_like(self):
+        response = self.client.post(
+            path = reverse("question") + "like/question/1",
+            
+            HTTP_AUTHORIZATION = f"Bearer {self.access_token}"
+        )
+        self.assertEqual(response.status_code,200)
+    

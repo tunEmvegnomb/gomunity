@@ -98,7 +98,6 @@ class LikeQuestionView(APIView):
     def post(self, request, question_id):
         user = request.user
         target_question_like = QustionLikeModel.objects.filter(question=question_id)
-        print(f"타겟 질문글 좋아요가 있니?->{target_question_like}")
         if not target_question_like:
             target_question = QnAQuestionModel.objects.get(id=question_id)
             target_question_like = QustionLikeModel.objects.create(question=target_question, user=user)
