@@ -8,7 +8,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-    answer = AnswerSerializer(many=True, source="qnaanswer_set")
+    answer = AnswerSerializer(many=True, source="qnaanswer_set", read_only=True)
     class Meta:
         model = QnAQuestionModel
         fields = "__all__"

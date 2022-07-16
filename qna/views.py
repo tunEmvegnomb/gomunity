@@ -6,7 +6,8 @@ from rest_framework import status
 
 from .models import (
     QnAQuestion as QnAQuestionModel,
-    QuestionLike as QustionLikeModel,
+    QuestionLike as QuestionLikeModel,
+    AnswerLike as AnswerLikeModel
                      )
 from .serializers import QuestionSerializer, AnswerSerializer, QnAAnswerModel
 
@@ -30,6 +31,7 @@ class QuestionView(APIView):
             # question_serializer.save(user=self.request.user)
             return Response({"message":"질문글 작성에 성공했다북!"})
         else:
+            print(question_serializer.errors)
             # print(f"에러메시지{question_serializer.errors}")
             return Response({"message":"질문글 작성에 실패했다북..."})
         
@@ -97,11 +99,24 @@ class QuestionlistView(APIView):
 class LikeQuestionView(APIView):
     def post(self, request, question_id):
         user = request.user
-        target_question_like = QustionLikeModel.objects.filter(question=question_id)
+        target_question_like = QuestionLikeModel.objects.filter(question=question_id)
         if not target_question_like:
             target_question = QnAQuestionModel.objects.get(id=question_id)
-            target_question_like = QustionLikeModel.objects.create(question=target_question, user=user)
+            target_question_like = QuestionLikeModel.objects.create(question=target_question, user=user)
             return Response({"message":"좋아요를 눌렀다북!"},status=status.HTTP_200_OK)
         else:
             target_question_like.delete()
+            return Response({"message":"좋아요를 취소했다북.."},status=status.HTTP_200_OK)
+
+class LikeAnswerView(APIView):
+    def post(self, request, answer_id):
+        print("답글 좋아요 API 작동하라!")
+        user = request.user
+        target_answer_like = AnswerLikeModel.objects.filter(answer=answer_id)
+        if not target_answer_like:
+            target_answer = QnAAnswerModel.objects.get(id=answer_id)
+            target_answer_like = AnswerLikeModel.objects.create(answer=target_answer, user=user)
+            return Response({"message":"좋아요를 눌렀다북!"},status=status.HTTP_200_OK)
+        else:
+            target_answer_like.delete()
             return Response({"message":"좋아요를 취소했다북.."},status=status.HTTP_200_OK)
