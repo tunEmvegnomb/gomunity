@@ -10,6 +10,7 @@ urlpatterns = [
     path('<question_id>/answer/', views.AnswerView.as_view(), name='post_answer'),
     path('answer/<answer_id>', views.AnswerView.as_view(), name='qna_answer'),
     path('list/', views.QuestionlistView.as_view(), name='list_view'),
+    path('like/question/<question_id>', views.LikeQuestionView.as_view(), name='like_question'),
 ]
 
 

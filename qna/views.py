@@ -4,7 +4,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import (QnAQuestion as QnAQuestionModel)
+from .models import (
+    QnAQuestion as QnAQuestionModel,
+    QuestionLike as QustionLikeModel,
+                     )
 from .serializers import QuestionSerializer, AnswerSerializer, QnAAnswerModel
 
 
@@ -89,3 +92,17 @@ class QuestionlistView(APIView):
     def get(self, request):
         questions = QnAQuestionModel.objects.all()
         return Response(QuestionSerializer(questions, many=True).data)
+    
+
+class LikeQuestionView(APIView):
+    def post(self, request, question_id):
+        user = request.user
+        target_question_like = QustionLikeModel.objects.filter(question=question_id)
+        print(f"타겟 질문글 좋아요가 있니?->{target_question_like}")
+        if not target_question_like:
+            target_question = QnAQuestionModel.objects.get(id=question_id)
+            target_question_like = QustionLikeModel.objects.create(question=target_question, user=user)
+            return Response({"message":"좋아요를 눌렀다북!"},status=status.HTTP_200_OK)
+        else:
+            target_question_like.delete()
+            return Response({"message":"좋아요를 취소했다북.."},status=status.HTTP_200_OK)
