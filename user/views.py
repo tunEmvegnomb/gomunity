@@ -11,11 +11,13 @@ class UserView(APIView):
     
     # 회원가입
     def post(self, request):
+        print(request.data)
         serializer = UserSignUpSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({"message":"회원가입 성공이다북"}, status=status.HTTP_200_OK)
         else:
+            print(serializer.errors)
             return Response({"message":"회원가입에 실패했다북"}, status=status.HTTP_400_BAD_REQUEST)
     
     def put(self, request):
