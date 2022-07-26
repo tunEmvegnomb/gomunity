@@ -23,8 +23,8 @@ class QuestionView(APIView):
     
     # 질문글 작성하기 API
     def post(self, request):
-        # request.data['user'] = request.user.id 
-        # print(f"리퀘스트 데이터->{request.data}")
+        request.data['user'] = request.user.id 
+        print(f"리퀘스트 데이터->{request.data}")
         question_serializer = QuestionSerializer(data=request.data)
         if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
@@ -32,7 +32,7 @@ class QuestionView(APIView):
             return Response({"message":"질문글 작성에 성공했다북!"})
         else:
             print(question_serializer.errors)
-            # print(f"에러메시지{question_serializer.errors}")
+            print(f"에러메시지{question_serializer.errors}")
             return Response({"message":"질문글 작성에 실패했다북..."})
         
     #질문글 수정하기 API
@@ -92,7 +92,7 @@ class AnswerView(APIView):
 
 class QuestionlistView(APIView):
     def get(self, request):
-        questions = QnAQuestionModel.objects.all()
+        questions = QnAQuestionModel.objects.all().order_by('-created_at')
         return Response(QuestionSerializer(questions, many=True).data)
     
 

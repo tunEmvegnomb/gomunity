@@ -1,10 +1,16 @@
 from rest_framework import serializers
 from .models import QnAQuestion as QnAQuestionModel, QnAAnswer as QnAAnswerModel
+from user.models import User as UserModel
 
 class AnswerSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = QnAAnswerModel
-		fields = "__all__"
+    user = serializers.SerializerMethodField()
+    
+    def get_user(self, obj):
+        return obj.user.username
+    
+    class Meta:
+        model = QnAAnswerModel
+        fields = "__all__"
 
 
 class QuestionSerializer(serializers.ModelSerializer):

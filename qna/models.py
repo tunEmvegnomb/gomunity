@@ -18,7 +18,7 @@ class QnAAnswer(models.Model):
 	question = models.ForeignKey(QnAQuestion, verbose_name="질문", on_delete=models.SET_NULL, null=True)
 	content = models.TextField("답변")
 	like = models.ManyToManyField('user.User', related_name="answer_like", through="AnswerLike")
-	is_selected = models.BooleanField("채택여부")
+	is_selected = models.BooleanField("채택여부",null=True)
 
 	def __str__(self):
 		return f"작성된 글 {self.question.title} 의 {self.user.nickname} 의 답변"

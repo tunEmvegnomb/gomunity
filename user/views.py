@@ -18,7 +18,7 @@ class UserView(APIView):
             return Response({"message":"회원가입 성공이다북"}, status=status.HTTP_200_OK)
         else:
             print(serializer.errors)
-            return Response({"message":"회원가입에 실패했다북"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message":"실패했다 넌 실패했따 패배했다"}, status=status.HTTP_400_BAD_REQUEST)
     
     def put(self, request):
         return
