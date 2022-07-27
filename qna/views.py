@@ -23,8 +23,6 @@ class QuestionView(APIView):
     
     # 질문글 작성하기 API
     def post(self, request):
-        request.data['user'] = request.user.id 
-        print(f"리퀘스트 데이터->{request.data}")
         question_serializer = QuestionSerializer(data=request.data)
         if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
