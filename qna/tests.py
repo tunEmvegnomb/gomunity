@@ -16,7 +16,7 @@ class QuestionTest(APITestCase):
         cls.user = UserModel.objects.create_user('heejeong', '1234')
 
         # 질문글 셋업
-        cls.question_data = {'title' : '질문이 있습니다!' , 'content' : '도대체 이건 왜 되는거져?'}
+        cls.question_data = {'user' : cls.user, 'title' : '질문이 있습니다!' , 'content' : '도대체 이건 왜 되는거져?'}
         cls.question = QnAQuestionModel.objects.create(**cls.question_data)
         
         # 답글 셋업
