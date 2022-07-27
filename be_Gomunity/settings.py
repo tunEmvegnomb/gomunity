@@ -180,15 +180,15 @@ REST_FRAMEWORK = {
     ]
 }
 
-# .env 파일 설정
-# django 시크릿키만 쏙 빼줌
-env = environ.Env(
-    DEBUG=(bool, True)
-)
+# # .env 파일 설정
+# # django 시크릿키만 쏙 빼줌
+# env = environ.Env(
+#     DEBUG=(bool, True)
+# )
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 AUTH_USER_MODEL = 'user.User'
 
