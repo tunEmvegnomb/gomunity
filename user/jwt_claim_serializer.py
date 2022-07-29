@@ -9,3 +9,5 @@ class GomunityTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['username'] = user.username
         
         return token
+        
+        
