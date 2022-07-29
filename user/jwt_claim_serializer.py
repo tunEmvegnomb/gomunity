@@ -10,4 +10,3 @@ class GomunityTokenObtainPairSerializer(TokenObtainPairSerializer):
         
         return token
         
-        
