@@ -11,6 +11,7 @@ from .models import (
                      )
 from .serializers import QuestionSerializer, AnswerSerializer, QnAAnswerModel
 
+from .upload import upload_s3
 
 # Create your views here.
 class QuestionView(APIView):
@@ -26,6 +27,11 @@ class QuestionView(APIView):
         question_serializer = QuestionSerializer(data=request.data)
         if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
+            image = f"media/{request.data['image']}"
+            upload_url = upload_s3(image)
+                
+
+
             # question_serializer.save(user=self.request.user)
             return Response({"message":"질문글 작성에 성공했다북!"})
         else:
