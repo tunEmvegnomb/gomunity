@@ -10,6 +10,7 @@ class QnAQuestion(models.Model):
     created_at = models.DateTimeField("생성시간", auto_now_add=True)
     updated_at = models.DateTimeField("수정시간", auto_now=True)
     image = models.ImageField("이미지", null=True, upload_to="", blank=True)
+    hashtag = models.TextField("해시태그")
 
     def __str__(self):
         return f"작성된 질문은 {self.title} 입니다"
