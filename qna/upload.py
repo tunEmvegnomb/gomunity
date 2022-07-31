@@ -16,3 +16,4 @@ def upload_s3(image):
 
 now = datetime.datetime.now()
 # now = now.strftime('%Y%m%d_%H%')
+
