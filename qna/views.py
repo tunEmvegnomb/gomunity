@@ -25,12 +25,15 @@ class QuestionView(APIView):
     # 질문글 작성하기 API
     def post(self, request):
         question_serializer = QuestionSerializer(data=request.data)
+        print(f'얘는 -> {request.data}')
         if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
-            image = f"media/{request.data['image']}"
-            print(image)
-            upload_s3(image)
-                
+            try:
+                image = f"media/{request.data['image']}"
+                print(image)
+                upload_s3(image)
+            except:
+                pass
 
             # question_serializer.save(user=self.request.user)
             return Response({"message":"질문글 작성에 성공했다북!"})
@@ -62,7 +65,6 @@ class AnswerView(APIView):
     #답변글 작성하기 API
     def post(self, request, question_id):
         target_question = QnAQuestionModel.objects.get(id=question_id)
-        print(request.data['image'])
         # request.data['is_selected'] = False
         # request.data['user'] = request.user.id
         # request.data['question'] = target_question.id
@@ -74,8 +76,11 @@ class AnswerView(APIView):
                 "is_selected": False
             }
             answer_serializer.save(**after_valid_datas)
-            image = f"media/{request.data['image']}"
-            upload_s3(image)
+            try:
+                image = f"media/{request.data['image']}"
+                upload_s3(image)
+            except:
+                pass
             
             return Response({"message": "답변 작성 고맙거북"}, status=status.HTTP_200_OK)
         else:
