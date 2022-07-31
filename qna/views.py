@@ -28,6 +28,7 @@ class QuestionView(APIView):
         if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
             image = f"media/{request.data['image']}"
+            print(image)
             upload_s3(image)
                 
 

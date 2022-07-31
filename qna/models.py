@@ -9,8 +9,8 @@ class QnAQuestion(models.Model):
     like = models.ManyToManyField('user.User', related_name="question_like", through="QuestionLike")
     created_at = models.DateTimeField("생성시간", auto_now_add=True)
     updated_at = models.DateTimeField("수정시간", auto_now=True)
-    image = models.ImageField("이미지", null=True, upload_to="", blank=True)
-    hashtag = models.TextField("해시태그")
+    image = models.ImageField("이미지", upload_to="", blank=True, default="man.jpg")
+    hashtag = models.TextField("해시태그", default="#python")
 
     def __str__(self):
         return f"작성된 질문은 {self.title} 입니다"

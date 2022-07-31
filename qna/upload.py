@@ -1,3 +1,4 @@
+import datetime
 import boto3
 
 def upload_s3(image):
@@ -9,7 +10,9 @@ def upload_s3(image):
                 'ACL': 'public-read',
                 'ContentType': "image/jpeg"
                     })
-        url = f"https://gomunity.shop.s3.ap-northeast-2.amazonaws.com/{image}"
     except Exception as e:
         print(e)
-    return url
+
+
+now = datetime.datetime.now()
+# now = now.strftime('%Y%m%d_%H%')
