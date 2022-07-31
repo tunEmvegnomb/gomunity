@@ -9,7 +9,7 @@ class QnAQuestion(models.Model):
     like = models.ManyToManyField('user.User', related_name="question_like", through="QuestionLike")
     created_at = models.DateTimeField("생성시간", auto_now_add=True)
     updated_at = models.DateTimeField("수정시간", auto_now=True)
-    image = models.ImageField("이미지", upload_to="", blank=True, default="man.jpg")
+    image = models.ImageField("이미지", upload_to="", blank=True, null=True)
     hashtag = models.TextField("해시태그", default="#python")
 
     def __str__(self):
