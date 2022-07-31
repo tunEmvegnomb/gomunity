@@ -103,7 +103,7 @@ class QuestionlistView(APIView):
 class LikeQuestionView(APIView):
     def post(self, request, question_id):
         user = request.user
-        target_question_like = QuestionLikeModel.objects.filter(question=question_id)
+        target_question_like = QuestionLikeModel.objects.filter(question=question_id, user=user)
         if not target_question_like:
             target_question = QnAQuestionModel.objects.get(id=question_id)
             target_question_like = QuestionLikeModel.objects.create(question=target_question, user=user)
@@ -116,7 +116,7 @@ class LikeAnswerView(APIView):
     def post(self, request, answer_id):
         print("답글 좋아요 API 작동하라!")
         user = request.user
-        target_answer_like = AnswerLikeModel.objects.filter(answer=answer_id)
+        target_answer_like = AnswerLikeModel.objects.filter(answer=answer_id, user=user)
         if not target_answer_like:
             target_answer = QnAAnswerModel.objects.get(id=answer_id)
             target_answer_like = AnswerLikeModel.objects.create(answer=target_answer, user=user)
