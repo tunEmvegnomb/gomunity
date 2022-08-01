@@ -30,12 +30,12 @@ class QuestionView(APIView):
         user = request.user.username
         if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
-            now = datetime.datetime.now()
-            now = now.strftime('%Y%m%d_%H%M%S')
-            key = f"{user}/{now}.jpg"
-            question_serializer.save(image=key)
             try:
                 image = f"media/{request.data['image']}"
+                now = datetime.datetime.now()
+                now = now.strftime('%Y%m%d_%H%M%S')
+                key = f"{user}/{now}.jpg"
+                question_serializer.save(image=key)
                 upload_s3(image, user)
             except:
                 pass
