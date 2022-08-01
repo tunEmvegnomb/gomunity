@@ -49,12 +49,25 @@ class QuestionView(APIView):
         
     #질문글 수정하기 API
     def put(self, request, question_id):
+        print(request.data)
         question = QnAQuestionModel.objects.get(id=question_id)
+        user = request.user.username
         question_serializer = QuestionSerializer(question, data=request.data, partial=True)
         if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
+            try:
+                image = f"media/{request.data['image']}"
+                image = image.replace(" ","_")
+                now = datetime.datetime.now()
+                now = now.strftime('%Y%m%d_%H%M%S')
+                key = f"{user}/{now}.jpg"
+                question_serializer.save(image=key)
+                upload_s3(image, user)
+            except:
+                pass
             return Response({"message":"수정에 성공했다북!"}, status=status.HTTP_200_OK)
         else:
+            print(question_serializer.errors)
             return Response({"message":"수정할 내용을 전부 입력해라북!"}, status=status.HTTP_400_BAD_REQUEST)
 
     #질문글 삭제하기 API
@@ -70,9 +83,7 @@ class AnswerView(APIView):
     #답변글 작성하기 API
     def post(self, request, question_id):
         target_question = QnAQuestionModel.objects.get(id=question_id)
-        # request.data['is_selected'] = False
-        # request.data['user'] = request.user.id
-        # request.data['question'] = target_question.id
+        user = request.user.username
         answer_serializer = AnswerSerializer(data=request.data)
         if answer_serializer.is_valid():
             after_valid_datas = {
@@ -83,6 +94,11 @@ class AnswerView(APIView):
             answer_serializer.save(**after_valid_datas)
             try:
                 image = f"media/{request.data['image']}"
+                image = image.replace(" ","_")
+                now = datetime.datetime.now()
+                now = now.strftime('%Y%m%d_%H%M%S')
+                key = f"{user}/{now}.jpg"
+                answer_serializer.save(image=key)
                 upload_s3(image)
             except:
                 pass
@@ -91,13 +107,23 @@ class AnswerView(APIView):
         else:
             print(answer_serializer.errors)
             return Response({"message": "답변 작성 실패거북"}, status=status.HTTP_400_BAD_REQUEST)
-    
+    #답변글 수정하기
     def put(self, request, answer_id):
         answer = QnAAnswerModel.objects.get(id=answer_id)
         answer_serializer = AnswerSerializer(answer, data=request.data, partial=True)
-
+        user = request.user.username
         if answer_serializer.is_valid():
             answer_serializer.save(user=self.request.user)
+            try:
+                image = f"media/{request.data['image']}"
+                image = image.replace(" ","_")
+                now = datetime.datetime.now()
+                now = now.strftime('%Y%m%d_%H%M%S')
+                key = f"{user}/{now}.jpg"
+                answer_serializer.save(image=key)
+                upload_s3(image)
+            except:
+                pass
             return Response({"message":"답변 수정됐다북"}, status=status.HTTP_200_OK)
         else:
             return Response({"message":"답변 수정에 실패했다북!"}, status=status.HTTP_400_BAD_REQUEST)
