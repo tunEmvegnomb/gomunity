@@ -127,6 +127,7 @@ class AnswerView(APIView):
                 pass
             return Response({"message":"답변 수정됐다북"}, status=status.HTTP_200_OK)
         else:
+            print(answer_serializer.errors)
             return Response({"message":"답변 수정에 실패했다북!"}, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, answer_id):
