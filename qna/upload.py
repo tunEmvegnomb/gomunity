@@ -14,12 +14,12 @@ import boto3
 #         print(e)
 
 
-def upload_s3(image):
+def upload_s3(image, user):
     s3 = boto3.client('s3')
     
     now = datetime.datetime.now()
     now = now.strftime('%Y%m%d_%H%M%S')
-    key = f"media/{now}.jpg"
+    key = f"media/{user}/{now}.jpg"
     
     try:
         s3.upload_file(

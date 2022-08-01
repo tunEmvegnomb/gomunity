@@ -26,15 +26,17 @@ class QuestionView(APIView):
     # 질문글 작성하기 API
     def post(self, request):
         question_serializer = QuestionSerializer(data=request.data)
-        print(f'얘는 -> {request.data}')
+        print(request.data)
+        user = request.user.username
         if question_serializer.is_valid():
+            question_serializer.save(user=self.request.user)
             now = datetime.datetime.now()
             now = now.strftime('%Y%m%d_%H%M%S')
-            key = f"{now}.jpg"
-            question_serializer.save(user=self.request.user, image=key)
+            key = f"{user}/{now}.jpg"
+            question_serializer.save(image=key)
             try:
                 image = f"media/{request.data['image']}"
-                upload_s3(image)
+                upload_s3(image, user)
             except:
                 pass
 
