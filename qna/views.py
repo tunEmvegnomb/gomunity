@@ -82,6 +82,7 @@ class QuestionView(APIView):
 class AnswerView(APIView):
     #답변글 작성하기 API
     def post(self, request, question_id):
+        print(request.data)
         target_question = QnAQuestionModel.objects.get(id=question_id)
         user = request.user.username
         answer_serializer = AnswerSerializer(data=request.data)
@@ -99,7 +100,7 @@ class AnswerView(APIView):
                 now = now.strftime('%Y%m%d_%H%M%S')
                 key = f"{user}/{now}.jpg"
                 answer_serializer.save(image=key)
-                upload_s3(image)
+                upload_s3(image, user)
             except:
                 pass
             
@@ -121,7 +122,7 @@ class AnswerView(APIView):
                 now = now.strftime('%Y%m%d_%H%M%S')
                 key = f"{user}/{now}.jpg"
                 answer_serializer.save(image=key)
-                upload_s3(image)
+                upload_s3(image, user)
             except:
                 pass
             return Response({"message":"답변 수정됐다북"}, status=status.HTTP_200_OK)
