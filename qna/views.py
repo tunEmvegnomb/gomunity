@@ -26,12 +26,12 @@ class QuestionView(APIView):
     # 질문글 작성하기 API
     def post(self, request):
         question_serializer = QuestionSerializer(data=request.data)
-        print(request.data)
         user = request.user.username
         if question_serializer.is_valid():
             question_serializer.save(user=self.request.user)
             try:
                 image = f"media/{request.data['image']}"
+                image = image.replace(" ","_")
                 now = datetime.datetime.now()
                 now = now.strftime('%Y%m%d_%H%M%S')
                 key = f"{user}/{now}.jpg"
