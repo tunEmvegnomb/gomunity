@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import QnAQuestion as QnAQuestionModel, QnAAnswer as QnAAnswerModel
+from .upload import upload_s3
 # from user.models import User as UserModel
 
 class AnswerSerializer(serializers.ModelSerializer):
@@ -14,6 +15,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
 
 class QuestionSerializer(serializers.ModelSerializer):
+  
     answer = AnswerSerializer(many=True, source="qnaanswer_set", read_only=True)
     user = serializers.SerializerMethodField()
 

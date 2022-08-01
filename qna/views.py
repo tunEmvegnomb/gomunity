@@ -12,6 +12,7 @@ from .models import (
 from .serializers import QuestionSerializer, AnswerSerializer, QnAAnswerModel
 
 from .upload import upload_s3
+import datetime
 
 # Create your views here.
 class QuestionView(APIView):
@@ -27,10 +28,12 @@ class QuestionView(APIView):
         question_serializer = QuestionSerializer(data=request.data)
         print(f'얘는 -> {request.data}')
         if question_serializer.is_valid():
-            question_serializer.save(user=self.request.user)
+            now = datetime.datetime.now()
+            now = now.strftime('%Y%m%d_%H%M%S')
+            key = f"{now}.jpg"
+            question_serializer.save(user=self.request.user, image=key)
             try:
                 image = f"media/{request.data['image']}"
-                print(image)
                 upload_s3(image)
             except:
                 pass
