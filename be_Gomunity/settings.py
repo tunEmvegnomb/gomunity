@@ -39,6 +39,9 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:5500',
     'http://localhost:8000',
     'http://gomunity.shop.s3-website.ap-northeast-2.amazonaws.com',
+    'https://gomunity.shop',
+    'https://gomunity.org',
+    'https://www.gomunity.org',
 )
 
 CORS_ALLOW_METHODS = (
@@ -65,6 +68,7 @@ CORS_ALLOW_HEADERS = (
 
 CSRF_TRUSTED_ORIGINS = (
     'http://127.0.0.1:5500',
+    'https://gomunity.shop',
 )
 
 
