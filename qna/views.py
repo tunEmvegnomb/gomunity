@@ -14,6 +14,8 @@ from .serializers import QuestionSerializer, AnswerSerializer, QnAAnswerModel
 from .upload import upload_s3
 import datetime
 
+from .deep_learning import return_five_recommends
+
 # Create your views here.
 class QuestionView(APIView):
     # 질문글 상세 조회하기 API
@@ -167,3 +169,25 @@ class LikeAnswerView(APIView):
         else:
             target_answer_like.delete()
             return Response({"message":"좋아요를 취소했다북.."},status=status.HTTP_200_OK)
+        
+        
+class QuestionRecommendView(APIView):
+    def post(self, request, question_id):
+        target_hashtag = QnAQuestionModel.objects.get(id=question_id).hashtag
+        all_data_hashtag = QnAQuestionModel.objects.exclude(id=question_id)
+        print(all_data_hashtag)
+        all_hashtag_list = [
+            {
+                "id":excluded_data.id,
+                "hashtag":excluded_data.hashtag
+                } for excluded_data in all_data_hashtag]
+        
+        result = return_five_recommends(target_hashtag, all_hashtag_list)
+
+        # 머신러닝 결과가 [5, 6, 8 , 10, 11]
+        target_reco_list = []
+        for i in result:
+            target_reco_list.append(QnAQuestionModel.objects.get(id=i))
+            
+        return Response(QuestionSerializer(target_reco_list,many=True).data)
+        

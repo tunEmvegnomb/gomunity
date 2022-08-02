@@ -213,13 +213,13 @@ REST_FRAMEWORK = {
 
 # environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "123")
 
 AUTH_USER_MODEL = 'user.User'
 
 SIMPLE_JWT = {
 		# Access 토큰 유효 시간 설정하기
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
 		# Refresh 토큰 유효 시간 설정하기
     'REFRESH_TOKEN_LIFETIME': timedelta(days=60),
 
