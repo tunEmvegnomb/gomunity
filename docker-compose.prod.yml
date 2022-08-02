@@ -30,6 +30,7 @@ services:
       - ./:/usr/src/app/
       - static_volume:/usr/src/app/static
       - media_volume:/usr/src/app/media
+      - ~/.aws/:/root/.aws/:ro
     expose:
       - 8000
     depends_on:
