@@ -184,10 +184,9 @@ class QuestionRecommendView(APIView):
         
         result = return_five_recommends(target_hashtag, all_hashtag_list)
 
-        # 머신러닝 결과가 [5, 6, 8 , 10, 11]
         target_reco_list = []
         for i in result:
             target_reco_list.append(QnAQuestionModel.objects.get(id=i))
             
-        return Response(QuestionSerializer(target_reco_list,many=True).data)
+        return Response(QuestionSerializer(target_reco_list, many=True).data)
         
