@@ -190,3 +190,5 @@ class QuestionRecommendView(APIView):
             
         return Response(QuestionSerializer(target_reco_list, many=True).data)
         
+        
+        
