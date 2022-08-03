@@ -19,11 +19,15 @@ class UserView(APIView):
         print(request.data)
         serializer = UserSignUpSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()        
+            serializer.save()
+            password = request.data['password']
+            password2 = request.data['password2']
+            if password != password2:
+                return Response({"message":"패스워드를 동일하게 해주라북."}, status=status.HTTP_401_UNAUTHORIZED)
             return Response({"message":"회원가입 성공이다북"}, status=status.HTTP_200_OK)
-
+        print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+        
     def put(self, request):
         return
     

@@ -34,5 +34,12 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         elif len(data["password"]) < 8 or condition:
             raise serializers.ValidationError(
                 detail={"error": "비밀번호는 8자 이상 특수문자 포함해 입력해주세요"},)
-        return data
         
+        elif  len(data["nickname"]) < 2 :
+            raise serializers.ValidationError(
+                detail={"error": "닉네임은 최소 2자 이상 입력해야 합니다."},)
+        return data
+            
+            
+        
+                
