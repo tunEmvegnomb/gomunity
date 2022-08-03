@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, exceptions
 from user.serializers import UserSignUpSerializer
 from user.jwt_claim_serializer import GomunityTokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -19,11 +19,10 @@ class UserView(APIView):
         print(request.data)
         serializer = UserSignUpSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save()        
             return Response({"message":"회원가입 성공이다북"}, status=status.HTTP_200_OK)
-        else:
-            print(serializer.errors)
-            return Response({"message":"실패했다 넌 실패했따 패배했다"}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def put(self, request):
         return
