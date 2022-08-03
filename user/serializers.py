@@ -35,3 +35,4 @@ class UserSignUpSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 detail={"error": "비밀번호는 8자 이상 특수문자 포함해 입력해주세요"},)
         return data
+        
