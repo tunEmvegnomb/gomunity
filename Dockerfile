@@ -3,7 +3,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 RUN apk update
-RUN apk add build-base python3-dev py-pip jpeg-dev zlib-dev libpq-dev gcc gfortran musl-dev libffi-dev openssl-dev
+# RUN apk add build-base python3-dev py-pip jpeg-dev zlib-dev libpq-dev gcc gfortran musl-dev libffi-dev openssl-dev
+RUN apk --no-cache add build-base python3-dev py-pip jpeg-dev zlib-dev libpq-dev gcc gfortran musl-dev linux-headers g++ libffi-dev openssl-dev
 
 COPY requirements.txt /usr/src/app/
 
