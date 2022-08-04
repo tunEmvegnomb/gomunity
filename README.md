@@ -44,6 +44,8 @@
 - 2022.07.07 ~ 2022.07.17
 - ver.1.0에는 회원 기능, 공지사항 게시판, 질의응답 게시판의 백엔드 API가 작성되었습니다.
 
+### [VER.1.2](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.2-SA)
+
 
 ## 프로젝트 일정
 ---
