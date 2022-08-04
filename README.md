@@ -14,7 +14,7 @@
 - [🧔황영상](http://velog.io/@migdracios)
 - [🧝김태인](https://velog.io/@kti0940)
 - [👩‍🚀김희정](https://khjhj3808.tistory.com/)
-- [🧛‍♂️한건희]
+- [🧛‍♂️한건희](https://hee94.tistory.com/)
 
 ---
 
