@@ -25,7 +25,7 @@
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
 3. 배포 - Docker, EC2, S3, Cloudfront, Route53  
   <img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> <img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"> <img src="https://img.shields.io/badge/S3-red?style=for-the-badge&logo=S3&logoColor=white">
-  <img src="https://img.shields.io/badge/Cloudfront-red?style=for-the-badge&logo=Cloudfront&logoColor=white"><img src="https://img.shields.io/badge/EC2-yellow?style=for-the-badge&logo=EC2&logoColor=white"><img src="https://img.shields.io/badge/Route53-gray?style=for-the-badge&logo=Route53&logoColor=white">
+  <img src="https://img.shields.io/badge/Cloudfront-red?style=for-the-badge&logo=Cloudfront&logoColor=white"> <img src="https://img.shields.io/badge/EC2-yellow?style=for-the-badge&logo=EC2&logoColor=white"> <img src="https://img.shields.io/badge/Route53-gray?style=for-the-badge&logo=Route53&logoColor=white">
 4. 기타 - VS Code, PostgreSQL  
   <img src="https://img.shields.io/badge/postgresql-blue?style=for-the-badge&logo=postgresql&logoColor=white"><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   
