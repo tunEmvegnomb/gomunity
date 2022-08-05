@@ -18,21 +18,19 @@ from .deep_learning import return_five_recommends
 
 
 # 이미지 이름변경 함수
-
 def change_naming(origin_image, username):
     origin_image = origin_image.replace(" ","_")
     now = datetime.datetime.now()
     now = now.strftime('%Y%m%d_%H%M%S')
     key = f"{username}/{now}.jpg"
-
     return key
+
 
 # Create your views here.
 class QuestionView(APIView):
     def get(self, request, question_id):
         target_question = QnAQuestionModel.objects.get(id=question_id)
-        question_serializer = QuestionSerializer(target_question).data
-        return Response(question_serializer)
+        return Response(QuestionSerializer(target_question).data)
     
     # 질문글 작성하기 API
     def post(self, request):
@@ -45,11 +43,10 @@ class QuestionView(APIView):
                 key = change_naming(image, user)
                 question_serializer.save(image=key)
                 upload_s3(image, user)
-            except:
-                pass
+            except: 
+                pass   
             return Response({"message":"질문글 작성에 성공했다북!"})
-        else:
-            return Response({"message":"질문글 작성에 실패했다북..."})
+        return Response({"message":"질문글 작성에 실패했다북..."})
         
     #질문글 수정하기 API
     def put(self, request, question_id):
@@ -66,17 +63,14 @@ class QuestionView(APIView):
             except:
                 pass
             return Response({"message":"수정에 성공했다북!"}, status=status.HTTP_200_OK)
-        else:
-            return Response({"message":"수정할 내용을 전부 입력해라북!"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"message":"수정할 내용을 전부 입력해라북!"}, status=status.HTTP_400_BAD_REQUEST)
 
     #질문글 삭제하기 API
     def delete(self, request, question_id):
         question = QnAQuestionModel.objects.get(id=question_id)
         question.delete()
         return Response({"message":"질문 게시글이 삭제되었다북!"}, status=status.HTTP_200_OK)
-
-
-
+    
 
 class AnswerView(APIView):
     #답변글 작성하기 API
@@ -98,10 +92,9 @@ class AnswerView(APIView):
                 upload_s3(image, user)
             except:
                 pass
-            
             return Response({"message": "답변 작성 고맙거북"}, status=status.HTTP_200_OK)
-        else:
-            return Response({"message": "답변 작성 실패거북"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"message": "답변 작성 실패거북"}, status=status.HTTP_400_BAD_REQUEST)
+    
     #답변글 수정하기
     def put(self, request, answer_id):
         answer = QnAAnswerModel.objects.get(id=answer_id)
@@ -117,8 +110,7 @@ class AnswerView(APIView):
             except:
                 pass
             return Response({"message":"답변 수정됐다북"}, status=status.HTTP_200_OK)
-        else:
-            return Response({"message":"답변 수정에 실패했다북!"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"message":"답변 수정에 실패했다북!"}, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, answer_id):
         answer = QnAAnswerModel.objects.get(id=answer_id)
@@ -131,7 +123,7 @@ class QuestionlistView(APIView):
     def get(self, request):
         questions = QnAQuestionModel.objects.all().order_by('-created_at')
         return Response(QuestionSerializer(questions, many=True).data)
-    
+
 
 class LikeQuestionView(APIView):
     def post(self, request, question_id):
@@ -141,9 +133,9 @@ class LikeQuestionView(APIView):
             target_question = QnAQuestionModel.objects.get(id=question_id)
             target_question_like = QuestionLikeModel.objects.create(question=target_question, user=user)
             return Response({"message":"좋아요를 눌렀다북!"},status=status.HTTP_200_OK)
-        else:
-            target_question_like.delete()
-            return Response({"message":"좋아요를 취소했다북.."},status=status.HTTP_200_OK)
+        target_question_like.delete()
+        return Response({"message":"좋아요를 취소했다북.."},status=status.HTTP_200_OK)
+
 
 class LikeAnswerView(APIView):
     def post(self, request, answer_id):
@@ -153,9 +145,8 @@ class LikeAnswerView(APIView):
             target_answer = QnAAnswerModel.objects.get(id=answer_id)
             target_answer_like = AnswerLikeModel.objects.create(answer=target_answer, user=user)
             return Response({"message":"좋아요를 눌렀다북!"},status=status.HTTP_200_OK)
-        else:
-            target_answer_like.delete()
-            return Response({"message":"좋아요를 취소했다북.."},status=status.HTTP_200_OK)
+        target_answer_like.delete()
+        return Response({"message":"좋아요를 취소했다북.."},status=status.HTTP_200_OK)
         
         
 class QuestionRecommendView(APIView):
