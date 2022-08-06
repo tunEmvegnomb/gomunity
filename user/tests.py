@@ -14,7 +14,6 @@ class SignUpTest(APITestCase):
             "password" : "password",
         }
         response = self.client.post(url, user_data)
-        print(response.data)
         self.assertEqual(response.status_code, 200)
 
 class LoginUserTest(APITestCase):

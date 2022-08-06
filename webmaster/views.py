@@ -20,7 +20,6 @@ class NoticeView(APIView):
             notice_serializer.save(user=self.request.user)
             return Response({"message" : "공지사항 작성에 성공했다북!"}, status=status.HTTP_200_OK)
         else:
-            print(notice_serializer.errors)
             return Response({"message" : "공지사항 작성에 실패했다북..."}, status=status.HTTP_400_BAD_REQUEST)
     
     def put(self, request, id):
