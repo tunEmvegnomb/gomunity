@@ -14,25 +14,20 @@
 - [🧔황영상](http://velog.io/@migdracios)
 - [🧝김태인](https://velog.io/@kti0940)
 - [👩‍🚀김희정](https://khjhj3808.tistory.com/)
-- [🧛‍♂️한건희]
+- [🧛‍♂️한건희](https://hee94.tistory.com/)
 
 ---
 
 ## 기술 스택
-1. 백엔드 - Python, Django, Django Rest Framework
-  <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-  <img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white">
-2. 프론트엔드 - HTML, CSS, Javascript
-  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
-  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
-  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
-3. 배포 - Docker, EC2, S3
-  <img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> 
-  <img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"> 
-4. 기타 - VS Code, MySQL
-  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
-  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+1. 백엔드 - Python, Django, Django Rest Framework  
+  <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white">
+2. 프론트엔드 - HTML, CSS, Javascript  
+  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
+3. 배포 - Docker, EC2, S3, Cloudfront, Route53  
+  <img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> <img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"> <img src="https://img.shields.io/badge/S3-red?style=for-the-badge&logo=S3&logoColor=white">
+  <img src="https://img.shields.io/badge/Cloudfront-red?style=for-the-badge&logo=Cloudfront&logoColor=white"> <img src="https://img.shields.io/badge/EC2-yellow?style=for-the-badge&logo=EC2&logoColor=white"> <img src="https://img.shields.io/badge/Route53-gray?style=for-the-badge&logo=Route53&logoColor=white">
+4. 기타 - VS Code, PostgreSQL  
+  <img src="https://img.shields.io/badge/postgresql-blue?style=for-the-badge&logo=postgresql&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   
 ## 그라운드 룰
 1. 서포팅 시스템(페어 프로그래밍)
@@ -45,9 +40,11 @@
 - 코딩을 하면서 버그 및 이슈가 발생했을 때, 이를 해결하고 바로 문서화하여 다른 팀원과 공유하는 것으로 발생한 이슈를 즉각적으로 리포팅해서 잊지 않고 해당 이슈를 체크하는 습관을 들이고, 문서를 통해 다른 팀원들도 쉽게 이해할 수 있게 하는 것이 그 목적에 있습니다.
 
 ## 버전 별 기획서
-### [VER.1.0](LINK)
+### [VER.1.0](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.0-SA)
 - 2022.07.07 ~ 2022.07.17
 - ver.1.0에는 회원 기능, 공지사항 게시판, 질의응답 게시판의 백엔드 API가 작성되었습니다.
+
+### [VER.1.2](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.2-SA)
 
 
 ## 프로젝트 일정
