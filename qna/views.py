@@ -82,6 +82,9 @@ class QuestionView(APIView):
     
 
 class AnswerView(APIView):
+    def get(self, request, answer_id):
+        target_answer = QnAAnswerModel.objects.get(id=answer_id)
+        return Response (AnswerSerializer(target_answer).data)
     #답변글 작성하기 API
     def post(self, request, question_id):
         target_question = QnAQuestionModel.objects.get(id=question_id)
