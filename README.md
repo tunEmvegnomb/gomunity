@@ -1,6 +1,7 @@
 # Gomunity
-내일배움캠프 프로젝트, 왕초보 질의응답 커뮤니티: 거뮤니티🐢
-![gomunity_og](https://user-images.githubusercontent.com/97969957/183551407-ca313572-96c5-4759-9181-146335afdd33.png)
+내일배움캠프 프로젝트, 왕초보 질의응답 커뮤니티: 거뮤니티🐢  
+
+![gomunity_og](https://user-images.githubusercontent.com/97969957/183551407-ca313572-96c5-4759-9181-146335afdd33.png)  
 
 ## 거뮤니티 소개
 - 거뮤니티는 코딩 초보자들이 상상할 수 있는 말도안되는 (ㄴㅇ0ㅇㄱ) 질문도 부담없이 할 수 있는 **커뮤니티성 질답 게시판** 사이트입니다. 
@@ -45,11 +46,19 @@
 - 2022.07.07 ~ 2022.07.17
 - ver.1.0에는 회원 기능, 공지사항 게시판, 질의응답 게시판의 백엔드 API가 작성되었습니다.
 
-### [VER.1.2](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.2-SA)
+### [VER.1.1]
+- ver.1.1에는 백엔드 API를 붙일 프론트엔드 작성, 도커 이미지화, AWS 배포가 이루어졌습니다.
 
-### [VER.1.2.1]
+### [VER.1.2](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.2-SA)
+- ver.1.2에는 코사인유사도를 활용한 질문글 추천시스템 작성, numpy 라이브러리를 포함한 도커 이미지 빌딩이 이루어졌습니다.
+
+### [VER.1.2.1](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.2.1-SA)
+- 2022.08.05 ~ 2022.08.06
+- ver.1.2.1에는 프로젝트를 배포하기 전 불필요한 코드를 수정하는 리팩토링 과정이 주로 진행되었습니다.
 
 ### [VER.1.3]
+- 2022.08.08 ~ 2022.08.09
+- ver.1.3에는 프로젝트의 설문조사 피드백 중 프론트엔드 디자인 개선에 중점을 두고 작업하였습니다.
 
 ## 프로젝트 일정
 ---
