@@ -1,5 +1,5 @@
 # Gomunity
-내일배움캠프 프로젝트, 왕초보 질의응답 커뮤니티: 거뮤니티🐢  
+[내일배움캠프 프로젝트, 왕초보 질의응답 커뮤니티: 거뮤니티🐢](https://gomunity.shop)
 
 ![gomunity_og](https://user-images.githubusercontent.com/97969957/183551407-ca313572-96c5-4759-9181-146335afdd33.png)  
 
@@ -56,7 +56,7 @@
 - 2022.08.05 ~ 2022.08.06
 - ver.1.2.1에는 프로젝트를 배포하기 전 불필요한 코드를 수정하는 리팩토링 과정이 주로 진행되었습니다.
 
-### [VER.1.3]
+### [VER.1.3](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.3-SA)
 - 2022.08.08 ~ 2022.08.09
 - ver.1.3에는 프로젝트의 설문조사 피드백 중 프론트엔드 디자인 개선에 중점을 두고 작업하였습니다.
 
