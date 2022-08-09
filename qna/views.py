@@ -25,6 +25,12 @@ def change_naming(origin_image, username):
     key = f"{username}/{now}.jpg"
     return key
 
+# 이미지 즉시 업로드
+class ImageUploadView(APIView):
+    def post(self, request):
+        image = request.data["file"]
+        url = upload_s3(image, request.user)
+        return Response({"message": "업로드 완료", "url": url}, status=status.HTTP_200_OK)        
 
 # Create your views here.
 class QuestionView(APIView):

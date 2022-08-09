@@ -3,6 +3,7 @@ from pdb import post_mortem
 from django import views
 from django.urls import path
 from . import views
+from . import upload
 
 urlpatterns = [
     path('', views.QuestionView.as_view(), name='question'),
@@ -13,6 +14,7 @@ urlpatterns = [
     path('like/question/<question_id>', views.LikeQuestionView.as_view(), name='like_question'),
     path('like/answer/<answer_id>', views.LikeAnswerView.as_view(), name='like_answer'),
     path('recommend/<question_id>', views.QuestionRecommendView.as_view(), name='qna_recommend'),
+    path('upload/', upload.upload_s3_hook, name='hook_upload'),
 ]
 
 
