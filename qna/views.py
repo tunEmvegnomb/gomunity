@@ -28,8 +28,11 @@ def change_naming(origin_image, username):
 # 이미지 즉시 업로드
 class ImageUploadView(APIView):
     def post(self, request):
+        # print(f"request.data->{request.data}")
+        # print(f"request.POST->{request.POST}")
         image = request.data["file"]
-        url = upload_s3(image, request.user)
+        print(image)
+        url = upload_s3(image, request.user.username)
         return Response({"message": "업로드 완료", "url": url}, status=status.HTTP_200_OK)        
 
 # Create your views here.
