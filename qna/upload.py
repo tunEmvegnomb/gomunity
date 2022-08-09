@@ -25,12 +25,6 @@ def upload_s3(image, user):
     print(f"키는 ->{key}")
     print(f"유저는 ->{user}")
     try:
-        # s3.put_object(
-        #     image, 'gomunity.shop', key,
-        #     ExtraArgs={
-        #         'ACL': 'public-read',
-        #         'ContentType': "image/jpeg"
-        #             })
         s3.put_object(
             ACL="public-read",
             Bucket = 'gomunity.shop',
