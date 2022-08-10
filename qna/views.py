@@ -11,7 +11,7 @@ from .models import (
                      )
 from .serializers import QuestionSerializer, AnswerSerializer, QnAAnswerModel
 
-from .upload import upload_s3
+from .upload import upload_s3, upload_thumbnail_s3
 import datetime
 
 from .deep_learning import return_five_recommends
@@ -28,10 +28,7 @@ def change_naming(origin_image, username):
 # 이미지 즉시 업로드
 class ImageUploadView(APIView):
     def post(self, request):
-        # print(f"request.data->{request.data}")
-        # print(f"request.POST->{request.POST}")
         image = request.data["file"]
-        print(image)
         url = upload_s3(image, request.user.username)
         return Response({"message": "업로드 완료", "url": url}, status=status.HTTP_200_OK)        
 
@@ -51,7 +48,7 @@ class QuestionView(APIView):
                 image = f"media/{request.data['image']}"
                 key = change_naming(image, user)
                 question_serializer.save(image=key)
-                upload_s3(image, user)
+                upload_thumbnail_s3(image, user)
             except: 
                 pass   
             return Response({"message":"질문글 작성에 성공했다북!"})
