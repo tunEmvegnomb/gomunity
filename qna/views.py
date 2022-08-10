@@ -2,7 +2,10 @@ from django.shortcuts import render
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, viewsets, mixins, generics
+from django_filters.rest_framework import DjangoFilterBackend
+
+
 
 from .models import (
     QnAQuestion as QnAQuestionModel,
@@ -132,7 +135,29 @@ class QuestionlistView(APIView):
     def get(self, request):
         questions = QnAQuestionModel.objects.all().order_by('-created_at')
         return Response(QuestionSerializer(questions, many=True).data)
+    
 
+        
+class QnAQuestionViewSet(viewsets.mixins.ListModelMixin, viewsets.GenericViewSet):
+    queryset = QnAQuestionModel.objects.all()
+    serializer_class = QuestionSerializer
+    filter_backends = (DjangoFilterBackend)
+    filterset_fields = ('user', 'title', 'content', 'hashtag')
+
+    def list(self, request, *args, **kwargs):
+        data = super().list(request, args, kwargs)
+        queryset = self.filter_queryset(self.get_queryset())
+        
+from rest_framework import filters
+
+class QuestionSearchView(generics.ListAPIView):
+    queryset = QnAQuestionModel.objects.all()
+    serializer_class = QuestionSerializer
+    filter_backends = [filters.SearchFilter]
+    # filter_backends = [DjangoFilterBackend]
+    search_fields = ['user__username', 'title', 'content', 'hashtag']
+    # search_fields = ['content']
+        
 
 class LikeQuestionView(APIView):
     def post(self, request, question_id):
