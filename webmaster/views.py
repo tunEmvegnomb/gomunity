@@ -9,7 +9,7 @@ from rest_framework import status
 
 class NoticeView(APIView):
     def get(self, request):
-        notices = NoticeModel.objects.all()
+        notices = NoticeModel.objects.all().order_by('-created_at')
         notices_serializer = NoticeSerializer(notices, many=True).data
         return Response(notices_serializer)
     
