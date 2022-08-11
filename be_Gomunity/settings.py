@@ -215,7 +215,7 @@ REST_FRAMEWORK = {
 
 # environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-SECRET_KEY = os.environ.get("SECRET_KEY","123")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 AUTH_USER_MODEL = 'user.User'
 
@@ -304,3 +304,6 @@ LOGGING = {
         }
     }
 }
+
+# 이미지 업로드 파일제한 5MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880
