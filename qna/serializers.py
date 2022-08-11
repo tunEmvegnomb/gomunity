@@ -15,12 +15,16 @@ class AnswerSerializer(serializers.ModelSerializer):
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-  
     answer = AnswerSerializer(many=True, source="qnaanswer_set", read_only=True)
     user = serializers.SerializerMethodField()
-
+    image_path = serializers.SerializerMethodField()
+    
     def get_user(self, obj):
         return obj.user.username
+
+    def get_image_path(self, obj):
+        print(obj.image)
+        return "/media/" + str(obj.image)
 
     class Meta:
         model = QnAQuestionModel
