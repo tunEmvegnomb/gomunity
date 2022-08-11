@@ -69,7 +69,7 @@ class QuestionView(APIView):
                 image = f"media/{request.data['image']}"
                 key = change_naming(image, user)
                 question_serializer.save(image=key)
-                upload_s3(image, user)
+                upload_thumbnail_s3(image, user)
             except:
                 pass
             return Response({"message":"수정에 성공했다북!"}, status=status.HTTP_200_OK)
@@ -102,7 +102,7 @@ class AnswerView(APIView):
                 image = f"media/{request.data['image']}"
                 key = change_naming(image, user)
                 answer_serializer.save(image=key)
-                upload_s3(image, user)
+                upload_thumbnail_s3(image, user)
             except:
                 pass
             return Response({"message": "답변 작성 고맙거북"}, status=status.HTTP_200_OK)
@@ -119,7 +119,7 @@ class AnswerView(APIView):
                 image = f"media/{request.data['image']}"
                 key = change_naming(image, user)
                 answer_serializer.save(image=key)
-                upload_s3(image, user)
+                upload_thumbnail_s3(image, user)
             except:
                 pass
             return Response({"message":"답변 수정됐다북"}, status=status.HTTP_200_OK)
