@@ -20,12 +20,18 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+    # 포스트맨 작성시 저장되지 않게 하여 계속 찍어볼 수 있음
+    # def create(self, validate_data):
+    #     return UserModel(**validaate_data)
+
     def validate(self, data):
         if UserModel.objects.filter(username=data["username"]).exists():
-            raise serializers.ValidationError("중복된 아이디가 존재합니다.")
+            raise serializers.ValidationError(
+                detail={"error": "중복된 아이디가 존재합니다"},)
 
         if UserModel.objects.filter(email=data["email"]).exists():
-            raise serializers.ValidationError("중복된 이메일이 존재합니다.")
+            raise serializers.ValidationError(
+                detail={"error": "중복된 이메일이 존재합니다"},)
 
         condition = all(x not in ["!", "@", "#", "$", "%", "^", "&", "*", "_"] for x in data["password"])
         if len(data["username"]) < 4:
