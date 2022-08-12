@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     'user',
     'qna',
     'webmaster',
+    'archive',
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
@@ -215,13 +216,13 @@ REST_FRAMEWORK = {
 
 # environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "coco")
 
 AUTH_USER_MODEL = 'user.User'
 
 SIMPLE_JWT = {
 		# Access 토큰 유효 시간 설정하기
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=10),
 		# Refresh 토큰 유효 시간 설정하기
     'REFRESH_TOKEN_LIFETIME': timedelta(days=60),
 

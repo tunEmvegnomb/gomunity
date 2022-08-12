@@ -38,6 +38,7 @@ class ImageUploadView(APIView):
 
 # Create your views here.
 class QuestionView(APIView):
+    # 질문글 상세 보여주기 API
     def get(self, request, question_id):
         target_question = QnAQuestionModel.objects.get(id=question_id)
         return Response(QuestionSerializer(target_question).data)
@@ -58,7 +59,7 @@ class QuestionView(APIView):
             return Response({"message":"질문글 작성에 성공했다북!"})
         return Response({"message":"질문글 작성에 실패했다북..."})
         
-    #질문글 수정하기 API
+    # 질문글 수정하기 API
     def put(self, request, question_id):
         question = QnAQuestionModel.objects.get(id=question_id)
         user = request.user.username
@@ -75,7 +76,7 @@ class QuestionView(APIView):
             return Response({"message":"수정에 성공했다북!"}, status=status.HTTP_200_OK)
         return Response({"message":"수정할 내용을 전부 입력해라북!"}, status=status.HTTP_400_BAD_REQUEST)
 
-    #질문글 삭제하기 API
+    # 질문글 삭제하기 API
     def delete(self, request, question_id):
         question = QnAQuestionModel.objects.get(id=question_id)
         question.delete()
@@ -83,10 +84,12 @@ class QuestionView(APIView):
     
 
 class AnswerView(APIView):
+    # 답변글 보여주기 API
     def get(self, request, answer_id):
         target_answer = QnAAnswerModel.objects.get(id=answer_id)
         return Response (AnswerSerializer(target_answer).data)
-    #답변글 작성하기 API
+    
+    # 답변글 작성하기 API
     def post(self, request, question_id):
         target_question = QnAQuestionModel.objects.get(id=question_id)
         user = request.user.username
@@ -109,7 +112,7 @@ class AnswerView(APIView):
         print(answer_serializer.errors)
         return Response({"message": "답변 작성 실패거북"}, status=status.HTTP_400_BAD_REQUEST)
     
-    #답변글 수정하기
+    # 답변글 수정하기
     def put(self, request, answer_id):
         answer = QnAAnswerModel.objects.get(id=answer_id)
         answer_serializer = AnswerSerializer(answer, data=request.data, partial=True)
@@ -125,14 +128,14 @@ class AnswerView(APIView):
                 pass
             return Response({"message":"답변 수정됐다북"}, status=status.HTTP_200_OK)
         return Response({"message":"답변 수정에 실패했다북!"}, status=status.HTTP_400_BAD_REQUEST)
-
+    # 답변글 삭제하기 API
     def delete(self, request, answer_id):
         answer = QnAAnswerModel.objects.get(id=answer_id)
         answer.delete()
 
         return Response({"message":"소중한 답변이 삭제됐다북"})
 
-
+# 질문글 목록 보기 API
 class QuestionlistView(APIView):
     def get(self, request):
         questions = QnAQuestionModel.objects.all().order_by('-created_at')
