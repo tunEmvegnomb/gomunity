@@ -1,3 +1,4 @@
+from curses import meta
 from rest_framework import serializers
 from .models import (
     Archive as ArchiveModel,
@@ -9,19 +10,27 @@ from .models import (
 
 
 class ArchiveAnswerSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+    archive = serializers.SerializerMethodField()
+    
+    def get_user(self, obj):
+        return obj.user.nickname
+    
+    def get_archive(self, obj):
+        return obj.archive.id
+    
     class Meta:
         model = ArchiveAnswerModel
-        fields = "__all__"
-
-
+        # fields = ["user", "archive", "content", "image", "created_at", "updated_at"]
+        fields = '__all__'
 
 class ArchiveSerializer(serializers.ModelSerializer):
     archive_answer = ArchiveAnswerSerializer(many=True, source="archiveanswer_set", read_only=True)
-    
-    user_nickname = serializers.SerializerMethodField(read_only=True)
+        
+    user = serializers.SerializerMethodField()
     article_category = serializers.SerializerMethodField(source="category_set")
     
-    def get_user_nickname(self, obj):
+    def get_user(self, obj):
         return obj.user.nickname
     
     def get_article_category(self, obj):
@@ -36,14 +45,11 @@ class ArchiveSerializer(serializers.ModelSerializer):
                     detail={"error" : "해시태그는 앞에 #을 붙여야 작성할 수 있습니다"}
                 )
         return data
-
-    def create(self, validate_data):
-        return ArchiveModel(**validate_data)
     
     class Meta:
         model = ArchiveModel
-        fields = ["user", "category", "title", "content", "image", 
-                "hashtag", "archive_answer", "user_nickname", "article_category"]
+        fields = ["user", "title", "content", "image", "category", "article_category",
+                "hashtag", "like", "archive_answer", "created_at", "updated_at"]
         
         extra_kwargs = {
             

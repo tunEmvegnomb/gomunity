@@ -116,7 +116,7 @@ class AnswerView(APIView):
     def put(self, request, answer_id):
         answer = QnAAnswerModel.objects.get(id=answer_id)
         answer_serializer = AnswerSerializer(answer, data=request.data, partial=True)
-        user = request.user.username
+        user = request.user.username #이미지 이름바꾸기위해 한거고
         if answer_serializer.is_valid():
             answer_serializer.save(user=self.request.user)
             try:
