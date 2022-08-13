@@ -28,7 +28,7 @@ class ArchiveView(APIView):
             return Response(archive_serializer.data)
         return Response(archive_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    # 자료 게시글 수정하기 API
+    # 자료 게시글 수정 API
     def put(self, request, archive_id):
         archive = ArchiveModel.objects.get(id=archive_id)
         archive_serializer = ArchiveSerializer(archive, data=request.data, partial=True)
@@ -38,13 +38,13 @@ class ArchiveView(APIView):
             # return Response({"message":"수정이 완료되었다북"})
         return Response(archive_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    
+    # 자료 게시글 삭제 API
     def delete(self, request, archive_id):
         archive = ArchiveModel.objects.get(id=archive_id)
         archive.delete()
         return Response({"message":"자료 게시글이 삭제되었다북!"}, status=status.HTTP_200_OK)
     
-
+# 자료 게시글 목록 조회 API
 class ArchivelistView(APIView):
     def get(self, request):
         archives_list = ArchiveModel.objects.all().order_by('-created_at')
