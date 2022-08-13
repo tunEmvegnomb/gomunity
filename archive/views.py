@@ -103,8 +103,9 @@ class LikeArchiveAnswerView(APIView):
         return Response({"message":"좋아요를 취소했다북.."},status=status.HTTP_200_OK)
             
     
-# 자료 게시판 목록 조회 API
+
 class ArchivelistView(APIView):
     def get(self, request):
         archives_list = ArchiveModel.objects.all().order_by('-created_at')
         return Response(ArchiveSerializer(archives_list).data, many=True)
+        

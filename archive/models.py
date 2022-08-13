@@ -40,3 +40,4 @@ class ArchiveLike(models.Model):
 class ArchiveAnswerLike(models.Model):
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     archive_answer = models.ForeignKey("archive.ArchiveAnswer", on_delete=models.CASCADE)
+    

@@ -74,3 +74,4 @@ class ArchiveSerializer(serializers.ModelSerializer):
             },
             'required':True
         }
+        
