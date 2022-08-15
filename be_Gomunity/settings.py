@@ -216,7 +216,7 @@ REST_FRAMEWORK = {
 
 # environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "coco")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 AUTH_USER_MODEL = 'user.User'
 
