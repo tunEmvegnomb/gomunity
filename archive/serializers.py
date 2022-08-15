@@ -1,4 +1,3 @@
-from curses import meta
 from rest_framework import serializers
 from .models import (
     Archive as ArchiveModel,
@@ -7,7 +6,6 @@ from .models import (
     ArchiveAnswerLike as ArchiveAnswerLikeModel,
     ArchiveCategory as ArchiveCategoryModel,
 )
-
 
 class ArchiveAnswerSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
@@ -21,15 +19,14 @@ class ArchiveAnswerSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ArchiveAnswerModel
-        # fields = ["user", "archive", "content", "image", "created_at", "updated_at"]
-        fields = '__all__'
+        fields = ["id","user", "archive", "content", "image", "created_at", "updated_at", "like"]
+        # fields = '__all__'
 
 class ArchiveSerializer(serializers.ModelSerializer):
     archive_answer = ArchiveAnswerSerializer(many=True, source="archiveanswer_set", read_only=True)
-        
     user = serializers.SerializerMethodField()
     article_category = serializers.SerializerMethodField(source="category_set")
-    
+        
     def get_user(self, obj):
         return obj.user.nickname
     
@@ -48,8 +45,9 @@ class ArchiveSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ArchiveModel
-        fields = ["user", "title", "content", "image", "category", "article_category",
-                "hashtag", "like", "archive_answer", "created_at", "updated_at"]
+        # fields = ["user", "title", "content", "image", "category", "article_category",
+        #         "hashtag", "like", "archive_answer", "created_at", "updated_at", "user_nickname"]
+        fields = "__all__"
         
         extra_kwargs = {
             
