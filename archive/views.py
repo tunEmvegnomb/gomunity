@@ -107,5 +107,6 @@ class LikeArchiveAnswerView(APIView):
 class ArchivelistView(APIView):
     def get(self, request):
         archives_list = ArchiveModel.objects.all().order_by('-created_at')
-        return Response(ArchiveSerializer(archives_list).data, many=True)
+        print(f"아카이브 리스트 ->{archives_list}")
+        return Response(ArchiveSerializer(archives_list, many=True).data)
         

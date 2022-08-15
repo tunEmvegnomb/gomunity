@@ -1,4 +1,3 @@
-from curses import meta
 from rest_framework import serializers
 from .models import (
     Archive as ArchiveModel,
@@ -10,10 +9,10 @@ from .models import (
 
 
 class ArchiveAnswerSerializer(serializers.ModelSerializer):
-    user = serializers.SerializerMethodField()
+    user_nickname = serializers.SerializerMethodField()
     archive = serializers.SerializerMethodField()
     
-    def get_user(self, obj):
+    def get_user_nickname(self, obj):
         return obj.user.nickname
     
     def get_archive(self, obj):
@@ -21,16 +20,16 @@ class ArchiveAnswerSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ArchiveAnswerModel
-        # fields = ["user", "archive", "content", "image", "created_at", "updated_at"]
-        fields = '__all__'
+        fields = ["user", "archive", "content", "image", "created_at", "updated_at", "user_nickname"]
+        # fields = '__all__'
 
 class ArchiveSerializer(serializers.ModelSerializer):
     archive_answer = ArchiveAnswerSerializer(many=True, source="archiveanswer_set", read_only=True)
         
-    user = serializers.SerializerMethodField()
+    user_nickname = serializers.SerializerMethodField()
     article_category = serializers.SerializerMethodField(source="category_set")
     
-    def get_user(self, obj):
+    def get_user_nickname(self, obj):
         return obj.user.nickname
     
     def get_article_category(self, obj):
@@ -48,8 +47,9 @@ class ArchiveSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ArchiveModel
-        fields = ["user", "title", "content", "image", "category", "article_category",
-                "hashtag", "like", "archive_answer", "created_at", "updated_at"]
+        # fields = ["user", "title", "content", "image", "category", "article_category",
+        #         "hashtag", "like", "archive_answer", "created_at", "updated_at", "user_nickname"]
+        fields = "__all__"
         
         extra_kwargs = {
             
