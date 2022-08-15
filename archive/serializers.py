@@ -25,11 +25,10 @@ class ArchiveAnswerSerializer(serializers.ModelSerializer):
 
 class ArchiveSerializer(serializers.ModelSerializer):
     archive_answer = ArchiveAnswerSerializer(many=True, source="archiveanswer_set", read_only=True)
-        
-    user_nickname = serializers.SerializerMethodField()
+    user = serializers.SerializerMethodField()
     article_category = serializers.SerializerMethodField(source="category_set")
-    
-    def get_user_nickname(self, obj):
+        
+    def get_user(self, obj):
         return obj.user.nickname
     
     def get_article_category(self, obj):

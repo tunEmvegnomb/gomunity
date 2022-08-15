@@ -26,8 +26,8 @@ class ArchiveView(APIView):
         archive_serializer = ArchiveSerializer(data=request.data)
         if archive_serializer.is_valid():
             archive_serializer.save(user=self.request.user)
-            # return Response ({"message" : "자료글 작성됐다북"}, status=status.HTTP_200_OK)
-            return Response(archive_serializer.data, status=status.HTTP_200_OK)
+            return Response ({"message" : "자료글 작성됐다북"}, status=status.HTTP_200_OK)
+            # return Response(archive_serializer.data, status=status.HTTP_200_OK)
         return Response(archive_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     # 자료 게시글 수정 API
@@ -107,6 +107,5 @@ class LikeArchiveAnswerView(APIView):
 class ArchivelistView(APIView):
     def get(self, request):
         archives_list = ArchiveModel.objects.all().order_by('-created_at')
-        print(f"아카이브 리스트 ->{archives_list}")
         return Response(ArchiveSerializer(archives_list, many=True).data)
         

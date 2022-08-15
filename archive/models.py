@@ -7,7 +7,6 @@ class Archive(models.Model):
     category = models.ForeignKey("archive.ArchiveCategory", verbose_name="자료게시판 카테고리", on_delete=models.CASCADE)
     title = models.CharField("제목", max_length=100)
     content = models.TextField("본문")
-    image = models.ImageField("썸네일 이미지", upload_to='')
     like = models.ManyToManyField(UserModel, related_name='archive_like', through='ArchiveLike')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
