@@ -7,12 +7,11 @@ from .models import (
     ArchiveCategory as ArchiveCategoryModel,
 )
 
-
 class ArchiveAnswerSerializer(serializers.ModelSerializer):
-    user_nickname = serializers.SerializerMethodField()
+    user = serializers.SerializerMethodField()
     archive = serializers.SerializerMethodField()
     
-    def get_user_nickname(self, obj):
+    def get_user(self, obj):
         return obj.user.nickname
     
     def get_archive(self, obj):
@@ -20,7 +19,7 @@ class ArchiveAnswerSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ArchiveAnswerModel
-        fields = ["user", "archive", "content", "image", "created_at", "updated_at", "user_nickname"]
+        fields = ["id","user", "archive", "content", "image", "created_at", "updated_at", "like"]
         # fields = '__all__'
 
 class ArchiveSerializer(serializers.ModelSerializer):

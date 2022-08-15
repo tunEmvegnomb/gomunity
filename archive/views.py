@@ -36,8 +36,8 @@ class ArchiveView(APIView):
         archive_serializer = ArchiveSerializer(archive, data=request.data, partial=True)
         if archive_serializer.is_valid():
             archive_serializer.save()
-            return Response(archive_serializer.data, status=status.HTTP_200_OK)
-            # return Response({"message":"수정이 완료되었다북"})
+            # return Response(archive_serializer.data, status=status.HTTP_200_OK)
+            return Response({"message":"수정이 완료되었다북"})
         return Response(archive_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     # 자료 게시글 삭제 API
@@ -59,7 +59,7 @@ class ArchiveAnswerView(APIView):
                 "archive":target_archive,
             }
             answer_serializer.save(**after_valid_datas)
-            return Response(answer_serializer.data)
+            return Response({"message": "답변 작성 고맙거북"}, status=status.HTTP_200_OK)
         return Response(answer_serializer.errors)
     
     # 자료게시글 답변 수정 API    
@@ -68,7 +68,7 @@ class ArchiveAnswerView(APIView):
         answer_serializer = ArchiveAnswerSerializer(answer, data=request.data, partial=True)
         if answer_serializer.is_valid():
             answer_serializer.save(user=self.request.user)
-            return Response(answer_serializer.data)
+            return Response({"message": "답변 수정 고맙거북"}, status=status.HTTP_200_OK)
         return Response(answer_serializer.errors)
     
     # 자료게시글 답변 삭제 API

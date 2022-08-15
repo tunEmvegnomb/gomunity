@@ -18,7 +18,7 @@ class ArchiveAnswer(models.Model):
     archive = models.ForeignKey("archive.Archive", verbose_name="자료", on_delete=models.CASCADE)
     content = models.TextField("답변")
     like = models.ManyToManyField(UserModel, related_name='archive_answerlike', through='ArchiveAnswerLike')
-    image = models.ImageField(upload_to='')
+    image = models.ImageField(upload_to='', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
