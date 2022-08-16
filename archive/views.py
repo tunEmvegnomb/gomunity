@@ -11,6 +11,7 @@ from .models import (
     )
 from .serializers import ArchiveAnswerSerializer, ArchiveSerializer
 
+# from .deep_learning import return_five_recommends
 
 # Create your views here.
 
@@ -109,3 +110,20 @@ class ArchivelistView(APIView):
         archives_list = ArchiveModel.objects.all().order_by('-created_at')
         return Response(ArchiveSerializer(archives_list, many=True).data)
         
+# class ArchiveRecommendView(APIView):
+#     def post(self, request, archive_id):
+#         target_hashtag = ArchiveModel.objects.get(id=archive_id).hashtag
+#         all_data_hashtag = ArchiveModel.objects.exclude(id=archive_id)
+#         all_hashtag_list = [
+#             {
+#                 "id":excluded_data.id,
+#                 "hashtag":excluded_data.hashtag
+#                 } for excluded_data in all_data_hashtag]
+        
+#         result = return_five_recommends(target_hashtag, all_hashtag_list)
+
+#         target_reco_list = []
+#         for i in result:
+#             target_reco_list.append(ArchiveModel.objects.get(id=i))
+            
+#         return Response(ArchiveSerializer(target_reco_list, many=True).data)
