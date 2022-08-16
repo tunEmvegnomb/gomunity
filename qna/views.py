@@ -146,7 +146,7 @@ class QuestionSearchView(generics.ListAPIView):
         queryset = QnAQuestionModel.objects.all().order_by('-created_at')
         serializer_class = QuestionSerializer
         filter_backends = [filters.SearchFilter]
-        search_fields = ['user__username', 'title', 'content', 'hashtag']
+        search_fields = ['user__nickname', 'title', 'content', 'hashtag']
         
 
 class LikeQuestionView(APIView):
