@@ -1,9 +1,6 @@
-from django.shortcuts import render
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
 
@@ -109,7 +106,6 @@ class AnswerView(APIView):
             except:
                 pass
             return Response({"message": "답변 작성 고맙거북"}, status=status.HTTP_200_OK)
-        print(answer_serializer.errors)
         return Response({"message": "답변 작성 실패거북"}, status=status.HTTP_400_BAD_REQUEST)
     
     # 답변글 수정하기

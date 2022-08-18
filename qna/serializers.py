@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import QnAQuestion as QnAQuestionModel, QnAAnswer as QnAAnswerModel
-from .upload import upload_s3
 # from user.models import User as UserModel
 
 

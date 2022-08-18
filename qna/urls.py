@@ -1,5 +1,3 @@
-from ast import Delete
-from pdb import post_mortem
 from django import views
 from django.urls import path
 from . import views
