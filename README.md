@@ -1,87 +1,162 @@
-# Gomunity
-
-[내일배움캠프 프로젝트, 왕초보 질의응답 커뮤니티: 거뮤니티🐢](https://gomunity.shop)
-
-![gomunity_og](https://user-images.githubusercontent.com/97969957/183551407-ca313572-96c5-4759-9181-146335afdd33.png)
-
-## 거뮤니티 소개
-
-- 거뮤니티는 코딩 초보자들이 상상할 수 있는 말도안되는 (ㄴㅇ0ㅇㄱ) 질문도 부담없이 할 수 있는 **커뮤니티성 질답 게시판** 사이트입니다.
-- 개발을 진행하고있는 구성원 전부가 무엇을 물어봐야하는지를 몰랐을만큼 기존의 스택오버플로우 게시판 이용이 어려웠기에,
-  **부담없이 질문하고 답변받을 수 있는 질답 커뮤니티**로 초보자들이 좀 더 코딩의 흥미를 붙였으면 좋겠다는 취지로 만들게 되었습니다
-- 또한 스파르타코딩클럽의 내배캠 참여자들이 평소에 흩어져있던 **자료들을 한번에 편리하게 볼 수 있도록**, 권한별로 주어지는 자료실 기능 또한 제공하여
-  보다 풍성한 공간으로 만들고자 합니다
+# 📌초보 개발자들의 커뮤니티, 거뮤니티
 
 ---
 
-## 팀 코딩의 코
+## 프로젝트 소개
 
-- 코딩의 코도 모르는 사람들이 모여 완전한 개발자로 나아가겠다는 의지가 담긴 팀입니다
-- [🧔황영상 블로그](http://velog.io/@migdracios)
-- [🧝김태인 블로그](https://velog.io/@kti0940)
-- [👩‍🚀김희정 블로그](https://khjhj3808.tistory.com/)
-- [🧛‍♂️한건희 블로그](https://hee94.tistory.com/)
+![gomunity_og](https://user-images.githubusercontent.com/97969957/185279549-76daa3f9-50dc-4eb7-b412-2f9faec1c2b3.png)
 
----
+- 거뮤니티는 초보 개발자들이 모여 거리낌없이 질문하고 답변하면서 어려운 점을 해소하기 위한 웹 프로젝트입니다.
+- 개발자는 구글링을 통해 자신이 가지고 있는 이슈와 비슷한 케이스를 찾고 트러블 슈팅하게 되지만 초보 개발자는 익숙하지 않아 쉽지 않습니다. 스택오버플로우 또한 마찬가지입니다.
+- 따라서 더 나은 개발자가 되기 위한 초석과 같은 커뮤니티가 있어서 성장을 할 수 있는 사이트가 필요할 것 같다는 저희 팀의 경험으로 구상하게 되었습니다.
+- 사용자가 될 초보 개발자가 거뮤니티를 통해서 어떤 질문이라도 편하게 질문하고, 답변을 받아 해결하면서 그것을 스스로가 정리해 다음 스텝으로 나아갈 수 있도록 희망합니다.
+- 개발 공부를 하면서 알게된 꼭 나와 같은 초보들에게 공유하고 싶은 팁을 게시하는 자료게시판또한 있어 누구나 초보였던 시절에 불편했던 일들을 해결했던 자료를 공유하여 쉽게 찾을 수 있는 레퍼런스가 되기를 희망합니다.
 
-## 기술 스택
-
-1. 백엔드 - Python, Django, Django Rest Framework  
-   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white">
-2. 프론트엔드 - HTML, CSS, Javascript  
-   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-3. 배포 - Docker, EC2, S3, Cloudfront, Route53  
-   <img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> <img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"> <img src="https://img.shields.io/badge/S3-red?style=for-the-badge&logo=S3&logoColor=white">
-   <img src="https://img.shields.io/badge/Cloudfront-red?style=for-the-badge&logo=Cloudfront&logoColor=white"> <img src="https://img.shields.io/badge/EC2-yellow?style=for-the-badge&logo=EC2&logoColor=white"> <img src="https://img.shields.io/badge/Route53-gray?style=for-the-badge&logo=Route53&logoColor=white">
-4. 기타 - VS Code, PostgreSQL  
-   <img src="https://img.shields.io/badge/postgresql-blue?style=for-the-badge&logo=postgresql&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
-
-## 그라운드 룰
-
-1. 서포팅 시스템(페어 프로그래밍)
-
-- 팀 코딩의 코는 때에 따라서 하나의 기능에 둘 이상의 팀원이 배치됩니다. 그리고 각자 코드를 작성하는 것이 아닌 VS Code의 확장인 Live Share를 사용하여 한 사람의 작업 공간에서 여러 명이 같이 볼 수 있는 환경을 사용합니다.
-- 함께 코딩을 하는 것으로 서로가 이해하지 못하는 부분을 설명하며, 코드 전반을 이해할 수 있도록 돕는 역할을 수행합니다.
-- 이는 상대적으로 챌린지한 기능을 수행하거나, 기초부분을 확실하게 다지기 위해 팀원 전원이 효율적으로 코딩을 수행할 수 있도록 하는데 목적이 있습니다.
-- 이에 그치치 않고, 하루 일정 중 먼저 끝난 인원이 있다면 아직 작업 중인 팀원과 함께 새로운 페어를 만들어 작업할 수 있도록 하는 규칙을 만들어 같이 일찍 끝낼 수 있도록 지원합니다.
-
-2. 즉각 이슈 리포팅
-
-- 팀 코딩의 코는 팀 전원이 작성한 코드를 잘 이해하고 넘어갈 수 있도록 자체 서포팅 시스템과 함께, 즉각 이슈 리포팅을 하기로 팀 전원과 합의하여 진행하고 있습니다.
-- 코딩을 하면서 버그 및 이슈가 발생했을 때, 이를 해결하고 바로 문서화하여 다른 팀원과 공유하는 것으로 발생한 이슈를 즉각적으로 리포팅해서 잊지 않고 해당 이슈를 체크하는 습관을 들이고, 문서를 통해 다른 팀원들도 쉽게 이해할 수 있게 하는 것이 그 목적에 있습니다.
-
-## 버전 별 기획서
-
-### [VER.1.0](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.0-SA)
-
-- 2022.07.07 ~ 2022.07.17
-- ver.1.0에는 회원 기능, 공지사항 게시판, 질의응답 게시판의 백엔드 API가 작성되었습니다.
-
-### [VER.1.1]
-
-- ver.1.1에는 백엔드 API를 붙일 프론트엔드 작성, 도커 이미지화, AWS 배포가 이루어졌습니다.
-
-### [VER.1.2](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.2-SA)
-
-- ver.1.2에는 코사인유사도를 활용한 질문글 추천시스템 작성, numpy 라이브러리를 포함한 도커 이미지 빌딩이 이루어졌습니다.
-
-### [VER.1.2.1](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.2.1-SA)
-
-- 2022.08.05 ~ 2022.08.06
-- ver.1.2.1에는 프로젝트를 배포하기 전 불필요한 코드를 수정하는 리팩토링 과정이 주로 진행되었습니다.
-
-### [VER.1.3](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.3-SA)
-
-- 2022.08.08 ~ 2022.08.09
-- ver.1.3에는 프로젝트의 설문조사 피드백 중 프론트엔드 디자인 개선에 중점을 두고 작업하였습니다.
-
-### [VER.1.4](https://github.com/tunEmvegnomb/gomunity/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B1%B0%EB%AE%A4%EB%8B%88%ED%8B%B0-VER.1.4-SA)
-
-- 2022.08.10 ~ 2022.08.13
-- ver.1.4에는 검색기능/자료게시판/회원가입 상태메시지 작성에 중점을 두고 작업하였습니다.
-
-## 프로젝트 일정
+# 📌기술 스택
 
 ---
 
-2022.07.07 ~ 2022.08.16
+## 서버
+
+<div style="display:flex">
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
+    <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white">
+<div>
+
+## 데이터베이스
+
+<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=PostgreSQL&logoColor=white">
+
+## 프론트엔드
+
+<div style="display:flex">
+    <img src="https://img.shields.io/badge/HTML5-e34f26?style=for-the-badge&logo=HTML5&logoColor=white">
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">
+    <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">    
+<div>
+
+## 프로젝트관리, 배포
+
+<div style="display:flex">
+    <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white">
+    <img src="https://img.shields.io/badge/Sourcetree-0052CC?style=for-the-badge&logo=Sourcetree&logoColor=white">
+    <img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white">
+    <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">    
+<div>
+<div style="display:flex">
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
+    <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white">
+    <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white">
+    <img src="https://img.shields.io/badge/Gunicorn-499848?style=for-the-badge&logo=Gunicorn&logoColor=white">
+    <img src="https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=NGINX&logoColor=white">
+<div>
+
+# 📌프로젝트 구조
+
+---
+
+## 프로젝트 아키텍쳐
+
+![image](https://user-images.githubusercontent.com/97969957/185283041-45f4504d-e797-4714-9d7e-058568c20f8d.png)
+
+### 서버
+
+- 서버는 EC2 안에서 nginx,gunicorn/django,postgreSQL이 도커를 통해 이미지로 빌드되어 구축되어 있습니다.
+- Lets Encrypt를 사용하여 443포트로 열린 HTTPS 도메인으로 배포되어 있습니다.
+- 도메인은 Route 53을 사용하였습니다.
+
+### 프론트엔드
+
+- 프론트엔드는 S3를 통해 정적배포 되었습니다.
+- AWS CloudFront으로 AWS SSL 인증서가 적용된 HTTPS 도메인으로 배포되어 있습니다.
+- 도메인은 Gabia를 사용하였습니다.
+
+## ERD
+
+![Gomunity](https://user-images.githubusercontent.com/97969957/185282933-80713a8e-cdf6-47c4-ba20-ef985fddf0d0.png)
+
+- 거뮤니티는 크게 세 가지로 나누어진 기능의 테이블로 작성되어 있습니다.
+  - 회원 모델
+  - 질의응답 게시글/답글/좋아요 모델
+  - 자료게시판 게시글/답글/카테고리/좋아요 모델
+
+## 서비스 플로우
+
+### 회원기능
+
+![회원가입](https://user-images.githubusercontent.com/97969957/185279221-5abe2894-0fd2-4636-8023-a467a292a2d6.gif)
+
+- 사용자는 거뮤니티의 게시글을 열람할 수 있습니다. 그러나, 작성/수정/삭제/좋아요 등의 기능은 로그인을 요구합니다.
+- 사용자는 회원가입 페이지에서 아이디,비밀번호,닉네임,이메일을 입력하고 회원가입합니다.
+  - 아이디,비밀번호,이메일은 작성조건이 있어 작성조건이 일치하지 않는다면 오류를 표시합니다.
+
+![로그인 및 게시판](https://user-images.githubusercontent.com/97969957/185279234-26e622ee-b357-4830-9792-d0a63abe1336.gif)
+
+- 사용자는 아이디 비밀번호를 입력하고 로그인합니다.
+  - 로그인한 사용자는 DRF Simple JWT로 토큰이 브라우저 로컬 스토리지에 저장됩니다.
+  - 사용자는 약 15분간 한 번 로그인한 상태를 유지하며, 새로고침을 통해서 토큰을 60일까지 저장합니다.
+
+### 질의응답게시판
+
+![게시글 등록](https://user-images.githubusercontent.com/97969957/185279026-1c6a22e1-b005-496e-977e-3940c4707a37.gif)
+
+- 사용자는 질의응답게시판을 통해서 개발과 관련된 주제로 자유롭게 질문하고 답변할 수 있습니다.
+- 사용자는 질의응답게시판에 작성된 글을 열람할 수 있습니다.
+- 사용자는 질의응답게시판의 글 및 답변의 작성/수정/삭제/좋아요 기능은 로그인을 통해서만 접근할 수 있습니다.
+- 사용자는 게시글 작성 버튼을 눌러 질문하고 싶은 내용을 담아 글을 작성합니다.
+  - 해시태그를 작성하여 이 후 게시글을 추천하는 용도로 활용됩니다.
+  - TOAST UI EDITOR가 적용되어 있어 마크다운 형식으로 글을 작성하거나 이미지를 업로드 할 수 있습니다.
+- 사용자는 자신이 작성한 글에 대해 수정/삭제 권한이 있으며 버튼으로 표시됩니다.
+  - 수정 버튼을 눌러 작성된 제목/해시태그/내용 등이 에디터 안에 표시되며 글을 수정할 수 있습니다.
+  - 삭제 버튼을 눌러 작성한 글 레코드를 삭제합니다.
+- 사용자는 게시글에 제목 밑의 좋아요 버튼을 클릭하여 좋아요 기능을 사용할 수 있습니다.
+  - 좋아요 된 버튼은 모양이 변경되며, 다시 한 번 클릭하면 좋아요가 취소됩니다.
+- 사용자는 게시글에 답글을 작성할 수 있습니다.
+  - 텍스트를 입력하고 작성버튼을 눌러 답글을 작성할 수 있습니다.
+- 사용자는 자신이 작성한 답글에 대해 수정/삭제 권한이 있으며 버튼으로 표시됩니다.
+  - 수정 버튼을 눌러 작성된 내용이 인풋에 표시되며 답글을 수정할 수 있습니다.
+  - 삭제 버튼을 눌러 작성한 답글 레코드를 삭제합니다.
+
+![게시글추천](https://user-images.githubusercontent.com/97969957/185279067-0d0505ee-fea5-4667-ab82-bc58cbaf9043.gif)
+
+- 사용자는 게시글을 조회 페이지에서 추천받기 버튼을 눌러 유사한 해시태그를 가진 게시글을 추천받을 수 있습니다.
+
+### 자료게시판
+
+![자료게시판](https://user-images.githubusercontent.com/97969957/185283883-96c75c91-1fb8-47a9-9d7d-4faf16956633.gif)
+
+- 사용자는 자료게시판을 통해서 개발하면서 알게 된 팁을 글을 작성하여 공유할 수 있습니다.
+- 사용자는 자료게시판의 글 및 답글의 조회가 가능합니다.
+- 사용자는 자료게시판의 글 및 답글의 작성/수정/삭제/좋아요 기능을 로그인을 통해서 접근할 수 있습니다.
+- 사용자는 게시글 작성 버튼을 눌러 질문하고 싶은 내용을 담아 글을 작성합니다.
+  - 카테고리를 중 공용 및 특정 권한 전용 하나를 선택하여, 열람권한을 정합니다.
+  - 해시태그를 작성하여 이 후 게시글을 추천하는 용도로 활용됩니다.
+  - TOAST UI EDITOR가 적용되어 있어 마크다운 형식으로 글을 작성하거나 이미지를 업로드 할 수 있습니다.
+- 사용자는 자신이 작성한 글에 대해 수정/삭제 권한이 있으며 버튼으로 표시됩니다.
+  - 수정 버튼을 눌러 작성된 제목/해시태그/내용 등이 에디터 안에 표시되며 글을 수정할 수 있습니다.
+  - 삭제 버튼을 눌러 작성한 글 레코드를 삭제합니다.
+- 사용자는 게시글에 제목 밑의 좋아요 버튼을 클릭하여 좋아요 기능을 사용할 수 있습니다.
+  - 좋아요 된 버튼은 모양이 변경되며, 다시 한 번 클릭하면 좋아요가 취소됩니다.
+- 사용자는 게시글에 답글을 작성할 수 있습니다.
+  - 텍스트를 입력하고 작성버튼을 눌러 답글을 작성할 수 있습니다.
+- 사용자는 자신이 작성한 답글에 대해 수정/삭제 권한이 있으며 버튼으로 표시됩니다.
+  - 수정 버튼을 눌러 작성된 내용이 인풋에 표시되며 답글을 수정할 수 있습니다.
+  - 삭제 버튼을 눌러 작성한 답글 레코드를 삭제합니다.
+
+# 버전 별 SA
+
+---
+
+## [ver.1.0]()
+
+## [ver.1.1]()
+
+## [ver.1.2]()
+
+## [ver.1.2.1]()
+
+## [ver.1.3]()
+
+## [ver.1.4]()
+
+# 이슈리포트
