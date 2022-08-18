@@ -222,7 +222,7 @@ AUTH_USER_MODEL = 'user.User'
 
 SIMPLE_JWT = {
 		# Access 토큰 유효 시간 설정하기
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=10),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
 		# Refresh 토큰 유효 시간 설정하기
     'REFRESH_TOKEN_LIFETIME': timedelta(days=60),
 
@@ -286,8 +286,7 @@ LOGGING = {
             'maxBytes': 10485760,
             'backupCount': 10,
         },
-        # console에 StreamHandler는
-        # 터미널창에 표시
+
         'console': {
             'class': 'logging.StreamHandler',
             'level': 'INFO',

@@ -21,8 +21,6 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         return user
 
     # 포스트맨 작성시 저장되지 않게 하여 계속 찍어볼 수 있음
-    # def create(self, validate_data):
-    #     return UserModel(**validaate_data)
 
     def validate(self, data):
         if UserModel.objects.filter(username=data["username"]).exists():

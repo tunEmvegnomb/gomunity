@@ -1,8 +1,5 @@
 import datetime
 import boto3
-import os
-from rest_framework.response import Response
-from django.utils import timezone
 
 def upload_thumbnail_s3(image, user):
     s3 = boto3.client('s3')
