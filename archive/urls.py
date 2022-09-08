@@ -9,5 +9,7 @@ urlpatterns = [
     path('answer/<int:answer_id>/', views.ArchiveAnswerView.as_view()),
     path('like/archive/<int:archive_id>/', views.LikeArchiveView.as_view(), name='like_archive'),
     path('like/answer/<int:answer_id>/', views.LikeArchiveAnswerView.as_view(), name='like_answer'),
+    path('pagination/', views.ArchaivePagination.as_view(), name='archive_pagination'),
     
 ]
+
