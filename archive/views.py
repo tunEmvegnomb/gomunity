@@ -1,7 +1,7 @@
 from webbrowser import get
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics
 
 from .models import (
     Archive as ArchiveModel,
@@ -10,6 +10,7 @@ from .models import (
     ArchiveAnswerLike as ArchiveAnswerLikeModel,
     )
 from .serializers import ArchiveAnswerSerializer, ArchiveSerializer
+from rest_framework.pagination import PageNumberPagination
 
 # from .deep_learning import return_five_recommends
 
@@ -127,3 +128,9 @@ class ArchivelistView(APIView):
 #             target_reco_list.append(ArchiveModel.objects.get(id=i))
             
 #         return Response(ArchiveSerializer(target_reco_list, many=True).data)
+
+
+class ArchaivePagination(generics.ListAPIView):
+    queryset = ArchiveModel.objects.all().order_by('-created_at')
+    serializer_class = ArchiveSerializer
+    pagination_class = PageNumberPagination
